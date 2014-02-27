@@ -10,9 +10,9 @@ protected:
     std::string mod_vanzare = getBucata();
 public:
 
-	Varza(std::string unitatea_de_masa_atasata)
+	Varza(std::string _unitatea_de_masa)
 	{
-        unitate_de_masa = unitatea_de_masa_atasata;
+        unitate_de_masa = _unitatea_de_masa;
 	}
 	~Varza()
 	{
