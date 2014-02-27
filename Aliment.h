@@ -1,0 +1,46 @@
+#ifndef ALIMENT_H_INCLUDED
+#define ALIMENT_H_INCLUDED
+
+
+class Aliment
+{
+private:
+    ///price - este pretul alimentului
+    ///askedQuantity - este cantitatea pe care o cere cumparatorul inainte sa se decida
+    ///soldQuantity - este cantitatea pe care magazionerul o vinde cumparatorului
+	double price, askedQuantity, soldQuantity;
+
+protected:
+    ///unitate_de_masa - reprezinta modalitatea prin care se vinde alimentul (la bucata, kg, volum, etc.)
+    std::string unitate_de_masa;
+
+public:
+    ///initializez cu 0 toate datele mele
+	Aliment()
+	{
+		price = 0;
+		askedQuantity = 0;
+		soldQuantity = 0;
+		unitate_de_masa = "";
+	}
+
+	~Aliment()
+	{
+
+	}
+
+    ///returnez pretul alimentului
+	double getAlimentPrice()
+	{
+	    return price;
+	}
+
+	///retin care este cantitatea ceruta de cumparator, si returnez pretul pentru aceasta cantitate
+	double getAlimentPriceByQuantity(double quantity)
+	{
+	    askedQuantity = quantity;
+	    return (double) askedQuantity * price;
+	}
+};
+
+#endif // ALIMENT_H_INCLUDED

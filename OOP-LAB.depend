@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1393506593 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
+	<iostream>
+	"Magazin.h"
+	"ListaMagazin.h"
+	"Mod_de_vanzare.h"
+	"Aliment.h"
+	"Varza.h"
+	"Bere.h"
+	"Faina.h"
+	"Cartofi.h"
+	"Vin.h"
+
+1393505463 c:\users\alexandru\documents\github\oop-lab\mod_de_vanzare.h
+
+1393505442 c:\users\alexandru\documents\github\oop-lab\aliment.h
+
+1393506385 c:\users\alexandru\documents\github\oop-lab\varza.h
+	"Aliment.h"
+	"Mod_de_vanzare.h"
+
+1393506494 c:\users\alexandru\documents\github\oop-lab\faina.h
+	"Aliment.h"
+
+1393505885 c:\users\alexandru\documents\github\oop-lab\bere.h
+	"Varza.h"
+
+1393506100 c:\users\alexandru\documents\github\oop-lab\magazin.h
+
+1393506118 c:\users\alexandru\documents\github\oop-lab\listamagazin.h
+
+1393506571 c:\users\alexandru\documents\github\oop-lab\cartofi.h
+	"Faina.h"
+
+1393506645 c:\users\alexandru\documents\github\oop-lab\vin.h
+

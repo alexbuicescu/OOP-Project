@@ -1,0 +1,6 @@
+#ifndef MAGAZIN_H_INCLUDED
+#define MAGAZIN_H_INCLUDED
+
+
+
+#endif // MAGAZIN_H_INCLUDED
