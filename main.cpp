@@ -17,7 +17,7 @@ int main()
 {
     Mod_de_vanzare *_unitate = new Mod_de_vanzare();
 
-	Aliment *p = new Varza(_unitate->getBucata());
+	Aliment *p = new Varza(12);
 
 	return 0;
 }

@@ -29,6 +29,16 @@ public:
 
 	}
 
+	void setAlimentPrice(double _price)
+	{
+	    price = _price;
+	}
+
+	void setQuantity(double _cantitate)
+	{
+	    askedQuantity = _cantitate;
+	}
+
     ///returnez pretul alimentului
 	double getAlimentPrice()
 	{
@@ -36,9 +46,8 @@ public:
 	}
 
 	///retin care este cantitatea ceruta de cumparator, si returnez pretul pentru aceasta cantitate
-	double getAlimentPriceByQuantity(double quantity)
+	double getAlimentPriceByQuantity()
 	{
-	    askedQuantity = quantity;
 	    return (double) askedQuantity * price;
 	}
 };

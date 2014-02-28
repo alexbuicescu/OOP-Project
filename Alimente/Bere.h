@@ -6,13 +6,11 @@ class Bere : public Aliment, public Mod_de_vanzare
 private:
     std::string brand, tip; ///tip poate fi doar blonda sau bruna
     std::string tip_blonda = "blonda", tip_bruna = "bruna";
-protected:
-    std::string mod_vanzare = getBucata();
 public:
 
-	Bere(std::string _unitatea_de_masa, std::string _brand, std::string _tip)
+	Bere(int _cantitate, std::string _brand, std::string _tip)
 	{
-	    unitate_de_masa = _unitatea_de_masa;
+	    unitate_de_masa = getBucata();
 	    brand = _brand;
 
 	    if(_tip == tip_blonda || _tip == tip_bruna)
@@ -23,6 +21,8 @@ public:
         {
             ///Throw an exception here !!! TO-DO
         }
+
+        setQuantity(_cantitate);
 	}
 	~Bere()
 	{

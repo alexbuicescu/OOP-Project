@@ -32,6 +32,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Aliment.h" />
+		<Unit filename="Bere.h" />
+		<Unit filename="Cartofi.h" />
+		<Unit filename="Faina.h" />
+		<Unit filename="ListaMagazin.h" />
+		<Unit filename="Magazin.h" />
+		<Unit filename="Mod_de_vanzare.h" />
+		<Unit filename="Varza.h" />
+		<Unit filename="Vin.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

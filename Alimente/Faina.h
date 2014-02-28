@@ -8,13 +8,11 @@ class Faina : public Aliment, public Mod_de_vanzare
 {
 private:
     int calitate; ///poate fi doar 1, 2 sau 3
-protected:
-    std::string mod_vanzare = getKg();
 public:
 
-	Faina(std::string _unitatea_de_masa, int _calitate)
+	Faina(int _cantitate, int _calitate)
 	{
-        unitate_de_masa = _unitatea_de_masa;
+        unitate_de_masa = getKg();
 
         if(_calitate >= 1 && calitate <= 3)
         {
@@ -24,6 +22,8 @@ public:
         {
             ///Throw an exception!!! TO-DO
         }
+
+        setQuantity(_cantitate);
 	}
 	~Faina()
 	{

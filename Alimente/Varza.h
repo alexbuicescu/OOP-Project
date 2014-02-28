@@ -6,13 +6,13 @@
 
 class Varza : public Aliment, public Mod_de_vanzare
 {
-protected:
-    std::string mod_vanzare = getBucata();
 public:
 
-	Varza(std::string _unitatea_de_masa)
+	Varza(double _cantitate)
 	{
-        unitate_de_masa = _unitatea_de_masa;
+        unitate_de_masa = getBucata();
+
+        setQuantity(_cantitate);
 	}
 	~Varza()
 	{

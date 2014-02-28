@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1393506593 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
+1393510740 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
 	<iostream>
 	"Magazin.h"
 	"ListaMagazin.h"
@@ -13,27 +13,27 @@
 
 1393505463 c:\users\alexandru\documents\github\oop-lab\mod_de_vanzare.h
 
-1393505442 c:\users\alexandru\documents\github\oop-lab\aliment.h
+1393510565 c:\users\alexandru\documents\github\oop-lab\aliment.h
 
-1393507707 c:\users\alexandru\documents\github\oop-lab\varza.h
+1393510597 c:\users\alexandru\documents\github\oop-lab\varza.h
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1393507890 c:\users\alexandru\documents\github\oop-lab\faina.h
+1393510621 c:\users\alexandru\documents\github\oop-lab\faina.h
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1393507935 c:\users\alexandru\documents\github\oop-lab\bere.h
+1393510690 c:\users\alexandru\documents\github\oop-lab\bere.h
 
 1393506100 c:\users\alexandru\documents\github\oop-lab\magazin.h
 
 1393506118 c:\users\alexandru\documents\github\oop-lab\listamagazin.h
 
-1393507843 c:\users\alexandru\documents\github\oop-lab\cartofi.h
+1393510690 c:\users\alexandru\documents\github\oop-lab\cartofi.h
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1393507983 c:\users\alexandru\documents\github\oop-lab\vin.h
+1393510903 c:\users\alexandru\documents\github\oop-lab\vin.h
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 

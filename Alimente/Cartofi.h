@@ -6,13 +6,13 @@
 
 class Cartofi : public Aliment, public Mod_de_vanzare
 {
-private:
-    std::string mod_vanzare = getKg();
 public:
 
-	Cartofi(std::string _unitatea_de_masa)
+	Cartofi(int _cantitate)
 	{
-        unitate_de_masa = _unitatea_de_masa;
+        unitate_de_masa = getKg();
+
+        setQuantity(_cantitate);
 	}
 	~Cartofi()
 	{
