@@ -29,18 +29,21 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++11" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="Alimente" />
+			<Add directory="Logic" />
 		</Compiler>
-		<Unit filename="Aliment.h" />
-		<Unit filename="Bere.h" />
-		<Unit filename="Cartofi.h" />
-		<Unit filename="Faina.h" />
-		<Unit filename="ListaMagazin.h" />
-		<Unit filename="Magazin.h" />
-		<Unit filename="Mod_de_vanzare.h" />
-		<Unit filename="Varza.h" />
-		<Unit filename="Vin.h" />
+		<Unit filename="Alimente/Aliment.h" />
+		<Unit filename="Alimente/Bere.h" />
+		<Unit filename="Alimente/Cartofi.h" />
+		<Unit filename="Alimente/Faina.h" />
+		<Unit filename="Alimente/Varza.h" />
+		<Unit filename="Alimente/Vin.h" />
+		<Unit filename="Logic/ListaMagazin.h" />
+		<Unit filename="Logic/Magazin.h" />
+		<Unit filename="Logic/Mod_de_vanzare.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
