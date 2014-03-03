@@ -1,0 +1,18 @@
+next
+faina calitate 2
+varza
+vin
+vin rosu
+vin rosu varsat
+pret?
+10 Lei
+
+next
+varza
+faina calitate 2
+vin
+vin rosu
+vin rosu varsat
+pret?
+20 Lei
+stop

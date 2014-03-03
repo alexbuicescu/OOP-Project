@@ -1,0 +1,18 @@
+varza 1
+faina 2 calitate 1
+faina 32 calitate 2
+faina 3 calitate 3
+bere 7 Tuborg blonda
+bere 5 Tuborg bruna
+bere 3.4 Heineken blonda
+vin_varsat 5.6 rosu sec
+vin_varsat 2 alb sec
+vin_de_soi 12 Cabernet_Savignon rosu sec Franta 1994
+vin_de_soi 32 Cabernet_Savignon rosu sec Franta 1892
+vin_de_soi 11 Merlot rosu dulce Argentina 2002
+vin_de_soi 22 Savignon_Blanc alb dulce Chile 1976
+vin_de_soi 45 Chardonnay alb dulce Australia 1873
+cartofi 12 albi
+cartofi 54 rosii
+jucarie 2 bomberman
+jucarie 11 toy

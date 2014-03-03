@@ -10,6 +10,25 @@ private:
     int calitate; ///poate fi doar 1, 2 sau 3
 public:
 
+    Faina(char _aliment_din_stoc[])
+    {
+        unitate_de_masa = getKg();
+
+        std::stringstream _my_stream;
+        _my_stream<<_aliment_din_stoc;
+
+        double _pret;
+        _my_stream>>_pret;
+        setAlimentPrice(_pret);
+
+        std::string not_important;
+        _my_stream>>not_important;
+
+        int _calitate;
+        _my_stream>>_calitate;
+        setCalitate(_calitate);
+    }
+
 	Faina(int _cantitate, int _calitate)
 	{
         unitate_de_masa = getKg();
@@ -28,6 +47,11 @@ public:
 	~Faina()
 	{
 
+	}
+
+	void setCalitate(int _calitate)
+	{
+	    calitate = _calitate;
 	}
 };
 
