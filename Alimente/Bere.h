@@ -24,6 +24,7 @@ public:
     Bere(char _aliment_din_stoc[])
     {
 	    unitate_de_masa = getBucata();
+        nume_aliment = "bere";
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -44,6 +45,7 @@ public:
 	Bere(int _cantitate, std::string _brand, std::string _tip)
 	{
 	    unitate_de_masa = getBucata();
+        nume_aliment = "bere";
 	    brand = _brand;
 
 	    if(_tip == tip_blonda || _tip == tip_bruna)

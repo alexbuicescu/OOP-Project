@@ -2,9 +2,9 @@
 #define VIN_H_INCLUDED
 
 #include <sstream>
+#include "Values.h"
 #include "Aliment.h"
 #include "Mod_de_vanzare.h"
-
 
 
 class Vin_varsat : public Aliment, public Mod_de_vanzare
@@ -17,6 +17,7 @@ public:
     Vin_varsat(char _aliment_din_stoc[])
     {
         unitate_de_masa = getVolum();
+        nume_aliment = "vin_varsat";
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -37,6 +38,7 @@ public:
 	Vin_varsat(int _cantitate)
 	{
         unitate_de_masa = getVolum();
+        nume_aliment = "vin_varsat";
 
         setQuantity(_cantitate);
 	}
@@ -70,6 +72,7 @@ public:
     Vin_de_soi(char _aliment_din_stoc[])
     {
         unitate_de_masa = getBucata();
+        nume_aliment = "vin_de_soi";
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -102,6 +105,7 @@ public:
 	Vin_de_soi(int _cantitate, std::string _soi = "", std::string _tara_de_origine = "")
 	{
         unitate_de_masa = getBucata();
+        nume_aliment = "vin_de_soi";
         setQuantity(_cantitate);
 
 	}
@@ -136,6 +140,72 @@ public:
     }
 };
 
+
+
+class Vin
+{
+private:
+    std::string culoare = "", soi = "", tara = "", an = "", nume = "";
+public:
+
+    Vin(std::string proprietati[], int _size)
+    {
+        for(int i = 0; i < _size; i++)
+        {
+            if(proprietati[i] == "rosu" || proprietati[i] == "alb")
+            {
+                setCuloare(proprietati[i]);
+            }
+            else
+            if(proprietati[i] == "sec" || proprietati[i] == "dulce")
+            {
+                setSoi(proprietati[i]);
+            }
+//            else
+//            if(proprietati[i] == "sec" || proprietati[i] == "dulce")
+//            {
+//                setSoi(proprietati[i]);
+//            }
+        }
+    }
+
+    void setCuloare(std::string _culoare)
+    {
+        culoare = _culoare;
+    }
+    void setSoi(std::string _soi)
+    {
+        soi = _soi;
+    }
+    void setTara(std::string _tara)
+    {
+        tara = _tara;
+    }
+    void setAn(std::string _an)
+    {
+        an = _an;
+    }
+    void setNume(std::string _nume)
+    {
+        nume = _nume;
+    }
+
+    Vin_de_soi* get_cel_mai_ieftin_soi()
+    {
+        for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+        {
+            return (Vin_de_soi*)magazinul_meu->getAlimentFromStock(i);
+        }
+    }
+
+    Vin_varsat* get_cel_mai_ieftin_varsat()
+    {
+        for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+        {
+            return (Vin_varsat*)magazinul_meu->getAlimentFromStock(i);
+        }
+    }
+};
 
 
 #endif // VIN_H_INCLUDED

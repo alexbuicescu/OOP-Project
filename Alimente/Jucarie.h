@@ -11,6 +11,7 @@ public:
     Jucarie(char _aliment_din_stoc[])
     {
         unitate_de_masa = getBucata();
+        nume_aliment = "jucarie";
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -27,6 +28,7 @@ public:
 	Jucarie(int _cantitate)
 	{
         unitate_de_masa = getBucata();
+        nume_aliment = "jucarie";
 
         setQuantity(_cantitate);
 	}

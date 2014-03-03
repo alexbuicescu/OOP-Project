@@ -13,6 +13,7 @@ public:
     Faina(char _aliment_din_stoc[])
     {
         unitate_de_masa = getKg();
+        nume_aliment = "faina";
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -32,6 +33,7 @@ public:
 	Faina(int _cantitate, int _calitate)
 	{
         unitate_de_masa = getKg();
+        nume_aliment = "faina";
 
         if(_calitate >= 1 && calitate <= 3)
         {

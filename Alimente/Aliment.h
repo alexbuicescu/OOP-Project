@@ -12,7 +12,7 @@ private:
 
 protected:
     ///unitate_de_masa - reprezinta modalitatea prin care se vinde alimentul (la bucata, kg, volum, etc.)
-    std::string unitate_de_masa;
+    std::string unitate_de_masa, nume_aliment;
 
 public:
     ///initializez cu 0 toate datele mele

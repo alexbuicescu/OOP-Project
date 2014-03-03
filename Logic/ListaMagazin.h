@@ -27,6 +27,16 @@ public:
         size_of_list++;
     }
 
+    Aliment* getFromLista(int indice_aliment)
+    {
+        return lista_mea[indice_aliment];
+    }
+
+    int get_size_of_list()
+    {
+        return size_of_list;
+    }
+
     void remove_from_list(Aliment *_aliment)
     {
         for(int i = 0; i < size_of_list; i++)

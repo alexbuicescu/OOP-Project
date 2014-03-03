@@ -12,6 +12,7 @@ public:
     Varza(char _aliment_din_stoc[])
     {
         unitate_de_masa = getBucata();
+        nume_aliment = "varza";
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -24,6 +25,7 @@ public:
 	Varza(double _cantitate)
 	{
         unitate_de_masa = getBucata();
+        nume_aliment = "varza";
 
         setQuantity(_cantitate);
 	}
