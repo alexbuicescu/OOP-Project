@@ -10,9 +10,28 @@
 class Vin_varsat : public Aliment, public Mod_de_vanzare
 {
 private:
-    std::string culoarea_vinului, soiul_vinului;
+    std::string culoarea_vinului = "", soiul_vinului = "";
     std::string soi_rosu_sec = "rosu_sec", soi_alb_sec = "alb_sec";
 public:
+
+    Vin_varsat(std::vector<std::string> proprietati)
+    {
+        setQuantity(atof(proprietati[0].c_str()));
+        setAlimentPrice(pret_maxim);
+
+        for(int i = 1; i < proprietati.size(); i++)
+        {
+            if(proprietati[i] == "rosu" || proprietati[i] == "alb")
+            {
+                culoarea_vinului = proprietati[i];
+            }
+            else
+            if(proprietati[i] == "sec" || proprietati[i] == "dulce")
+            {
+                soiul_vinului = proprietati[i];
+            }
+        }
+    }
 
     Vin_varsat(char _aliment_din_stoc[])
     {
@@ -61,13 +80,42 @@ public:
 class Vin_de_soi : public Aliment, public Mod_de_vanzare
 {
 private:
-    std::string numele_vinului;
-    std::string culoarea_vinului;
-    std::string soiul_vinului;
-    std::string Tara_de_origine;
-    int an_producere;
+    std::string numele_vinului = "";
+    std::string culoarea_vinului = "";
+    std::string soiul_vinului = "";
+    std::string Tara_de_origine = "";
+    int an_producere = 0;
 
 public:
+
+    Vin_de_soi(std::vector<std::string> proprietati)
+    {
+        setQuantity(atof(proprietati[0].c_str()));
+        setAlimentPrice(pret_maxim);
+
+        for(int i = 1; i < proprietati.size(); i++)
+        {
+            if(proprietati[i] == "rosu" || proprietati[i] == "alb")
+            {
+                culoarea_vinului = proprietati[i];
+            }
+            else
+            if(proprietati[i] == "sec" || proprietati[i] == "dulce")
+            {
+                soiul_vinului = proprietati[i];
+            }
+            else
+            if(proprietati[i][0] >= '0' && proprietati[i][0] <= '9')
+            {
+                an_producere = atoi(proprietati[i].c_str());
+            }
+            else
+            ///numele vinului e singurul care a mai putut ramane
+            {
+                numele_vinului = proprietati[i];
+            }
+        }
+    }
 
     Vin_de_soi(char _aliment_din_stoc[])
     {

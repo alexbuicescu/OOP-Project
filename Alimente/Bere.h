@@ -8,7 +8,7 @@
 class Bere : public Aliment, public Mod_de_vanzare
 {
 private:
-    std::string brand, tip; ///tip poate fi doar blonda sau bruna
+    std::string brand = "", tip = ""; ///tip poate fi doar blonda sau bruna
     std::string tip_blonda = "blonda", tip_bruna = "bruna";
 public:
 
@@ -20,6 +20,23 @@ public:
 //        in>>b->brand;
 //        return in;
 //    }
+    Bere(std::vector<std::string> proprietati)
+    {
+        setQuantity(atof(proprietati[0].c_str()));
+        setAlimentPrice(pret_maxim);
+
+        for(int i = 1; i < proprietati.size(); i++)
+        {
+            if(proprietati[i] == "blonda" || proprietati[i] == "bruna")
+            {
+                setTip(proprietati[i]);
+            }
+            else
+            {
+                setBrand(proprietati[i]);
+            }
+        }
+    }
 
     Bere(char _aliment_din_stoc[])
     {

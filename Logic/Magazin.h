@@ -18,6 +18,7 @@ public:
 
     ~Magazin()
     {
+        delete lista_produse_din_stoc;
         delete lista_cumparaturi_client;
     }
 

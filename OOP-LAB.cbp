@@ -37,13 +37,15 @@
 		</Compiler>
 		<Unit filename="Alimente/Aliment.h" />
 		<Unit filename="Alimente/Bere.h" />
-		<Unit filename="Alimente/Cartofi.h" />
+		<Unit filename="Alimente/Cartof.h" />
 		<Unit filename="Alimente/Faina.h" />
+		<Unit filename="Alimente/Jucarie.h" />
 		<Unit filename="Alimente/Varza.h" />
 		<Unit filename="Alimente/Vin.h" />
 		<Unit filename="Logic/ListaMagazin.h" />
 		<Unit filename="Logic/Magazin.h" />
 		<Unit filename="Logic/Mod_de_vanzare.h" />
+		<Unit filename="Logic/Values.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

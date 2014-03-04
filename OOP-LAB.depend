@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1393858253 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
+1393939588 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
 	<iostream>
 	<fstream>
 	<cstring>
 	<stdlib.h>
+	<vector>
 	"Magazin.h"
 	"ListaMagazin.h"
 	"Mod_de_vanzare.h"
@@ -41,27 +42,29 @@
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1393857744 c:\users\alexandru\documents\github\oop-lab\logic\magazin.h
+1393934434 c:\users\alexandru\documents\github\oop-lab\logic\magazin.h
 	"ListaMagazin.h"
 
 1393857724 c:\users\alexandru\documents\github\oop-lab\logic\listamagazin.h
 	"Aliment.h"
 
-1393852014 c:\users\alexandru\documents\github\oop-lab\alimente\aliment.h
+1393939279 c:\users\alexandru\documents\github\oop-lab\alimente\aliment.h
 
 1393505463 c:\users\alexandru\documents\github\oop-lab\logic\mod_de_vanzare.h
 
-1393852154 c:\users\alexandru\documents\github\oop-lab\alimente\varza.h
+1393940396 c:\users\alexandru\documents\github\oop-lab\alimente\varza.h
 	<sstream>
 	"Aliment.h"
+	"Values.h"
 	"Mod_de_vanzare.h"
 
-1393852192 c:\users\alexandru\documents\github\oop-lab\alimente\bere.h
+1393940215 c:\users\alexandru\documents\github\oop-lab\alimente\bere.h
 	<sstream>
 	<iostream>
 	<fstream>
 
-1393852173 c:\users\alexandru\documents\github\oop-lab\alimente\faina.h
+1393940206 c:\users\alexandru\documents\github\oop-lab\alimente\faina.h
+	"Values.h"
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
@@ -69,19 +72,19 @@
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1393857958 c:\users\alexandru\documents\github\oop-lab\alimente\vin.h
+1393940237 c:\users\alexandru\documents\github\oop-lab\alimente\vin.h
 	<sstream>
 	"Values.h"
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1393852181 c:\users\alexandru\documents\github\oop-lab\alimente\cartof.h
+1393940383 c:\users\alexandru\documents\github\oop-lab\alimente\cartof.h
 	"Aliment.h"
 	<sstream>
 	"Mod_de_vanzare.h"
 
-1393852164 c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.h
+1393939834 c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.h
 
-1393857452 c:\users\alexandru\documents\github\oop-lab\logic\values.h
+1393939509 c:\users\alexandru\documents\github\oop-lab\logic\values.h
 	"Magazin.h"
 

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstring>
 #include <stdlib.h>
+#include <vector>
 
 #include "Magazin.h"
 #include "ListaMagazin.h"
@@ -16,7 +17,9 @@
 #include "Jucarie.h"
 
 Magazin *magazinul_meu = new Magazin();
+double pret_maxim = -1;
 
+void get_proprietati_aliment(char aliment[], std::vector<std::string> &proprietati);
 int char_to_nr(char _cuvant[]);
 int char_to_nr(std::string _cuvant);
 std::string char_to_string(char _cuvant[]);
@@ -60,6 +63,43 @@ int main()
 //    }
 //    return nr;
 //}
+
+///in proprietati[0] se va afla mereu cantitatea dorita
+void get_proprietati_aliment(char aliment[], std::vector<std::string> &prop)
+{
+    std::string proprietate = "";
+    int k = 0;
+    ///vad care este prima pozitie pe care nu se afla un spatiu
+    for(k = 0; k < strlen(aliment); k++)
+    {
+        if(aliment[k] != ' ')
+        {
+            break;
+        }
+    }
+    for(int i = k; i < strlen(aliment); i++)
+    {
+        if(aliment[i] != ' ' && i != strlen(aliment) - 1)
+        {
+            proprietate += aliment[i]; ///change to .append TO-DO!!!
+            continue;
+        }
+        else
+            if(i == strlen(aliment) - 1)
+            {
+                proprietate += aliment[i]; ///change to .append TO-DO!!!
+            }
+
+        prop.push_back(proprietate);
+        proprietate = "";
+    }
+//    std::cout<<aliment<<'\n';
+//    for(int i = 0; i < proprietati.size(); i++)
+//    {
+//        std::cout<<"'"<<proprietati[i]<<"'"<<'\n';
+//    }
+//    std::cout<<'\n';
+}
 
 std::string char_to_string(char _cuvant[])
 {
@@ -123,7 +163,18 @@ void add_produse_valabile_din_stoc(std::string _nume_fisier_intrare)
         }
 
         magazinul_meu->add_in_stoc(_aliment);
+
+        if(pret_maxim == -1)
+        {
+            pret_maxim = _aliment->getAlimentPrice();
+        }
+        else
+            if(pret_maxim < _aliment->getAlimentPrice())
+            {
+                pret_maxim = _aliment->getAlimentPrice();
+            }
     }
+    pret_maxim++;
 }
 
 void serveste_clienti(std::string _nume_fisier_intrare)
@@ -143,54 +194,64 @@ void serveste_clienti(std::string _nume_fisier_intrare)
         std::string numele_alimentului = "";
         fin>>numele_alimentului;
 
-        double _cantitate = 0;
-        fin>>_cantitate;
+//        double _cantitate = 0;
+//        fin>>_cantitate;
 
         ///citesc care sunt alimentele pe care le vrea cumparatorul
         while(numele_alimentului != "next" && numele_alimentului != "stop" && numele_alimentului != "")
         {
             ///citesc proprietatile alimentului (calitate, an productie, etc.)
             fin.getline(rand_citit, 1000);
+
+            std::vector<std::string> proprietati;
+            get_proprietati_aliment(rand_citit, proprietati);
+
             Aliment *_aliment_curent;
 
             if(numele_alimentului == "varza")
             {
-                _cantitate = atof(rand_citit);
-                _aliment_curent = new Varza(_cantitate);
+//                _cantitate = atof(rand_citit);
+                _aliment_curent = new Varza(proprietati);
             }
             else
             if(strstr(numele_alimentului.c_str(), "vin"))
             {
-                std::string proprietati[6];
-                int k = 0;
-                for(int i = 0; i < strlen(rand_citit); i++)
-                {
-                    if(rand_citit[i] != ' ')
-                    {
-                        proprietati[k] += rand_citit[i];
-                    }
-                    else
-                    {
-                        k++;
-                    }
-                }
-
                 if(numele_alimentului == "vin_varsat")
                 {
-
+                    _aliment_curent = new Vin_varsat(proprietati);
                 }
                 else
                 if(numele_alimentului == "vin_de_soi")
                 {
-
+                    _aliment_curent = new Vin_de_soi(proprietati);
                 }
+            }
+            else
+            if(numele_alimentului == "faina")
+            {
+                _aliment_curent = new Faina(proprietati);
+            }
+            else
+            if(numele_alimentului == "bere")
+            {
+                _aliment_curent = new Bere(proprietati);
+            }
+            else
+            if(numele_alimentului == "jucarie")
+            {
+                _aliment_curent = new Jucarie(proprietati);
+            }
+            else
+            if(numele_alimentului == "cartof")
+            {
+                _aliment_curent = new Cartof(proprietati);
             }
 
             fin>>numele_alimentului;
 
             if(numele_alimentului != "next" && numele_alimentului != "stop" && numele_alimentului != "")
             {
-                fin>>_cantitate;
+//                fin>>_cantitate;
             }
         }
 

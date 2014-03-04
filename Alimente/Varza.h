@@ -3,11 +3,31 @@
 
 #include <sstream>
 #include "Aliment.h"
+#include "Values.h"
 #include "Mod_de_vanzare.h"
 
 class Varza : public Aliment, public Mod_de_vanzare
 {
 public:
+
+    Varza(std::vector<std::string> proprietati)
+    {
+        setQuantity(atof(proprietati[0].c_str()));
+        setAlimentPrice(pret_maxim);
+
+        for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+        {
+            ///daca in stoc am o varza
+            if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "varza")
+            {
+                if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
+                {
+                    setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
+                }
+            }
+
+        }
+    }
 
     Varza(char _aliment_din_stoc[])
     {
