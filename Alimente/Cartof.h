@@ -14,7 +14,7 @@ public:
     Cartof(std::vector<std::string> proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
-        setAlimentPrice(pret_maxim);
+        setAlimentPrice(-1);
 
         if(proprietati.size() >= 2)
         {
@@ -26,30 +26,14 @@ public:
             ///daca in stoc am o jucarie
             if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "cartof")
             {
-                ///daca cumparatorul vrea un anumita cartof
-                if(getTip() != "")
+                if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getTip()) != std::string::npos)
                 {
-                    ///daca i-am gasit cartoful, il iau pe cel mai ieftina
-                    if(getTip() == ((Cartof*)(magazinul_meu->getAlimentFromStock(i)))->getTip())
-                    {
-                        if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
-                        {
-                            setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
-                        }
-                        std::cout<<"a gasit cartof cu culoarea: "<<getTip()<<'\n';
-                    }
-                }
-                else
-                ///daca cumparatorul nu a dat un nume, iau cel mai ieftin cartof posibil
-                {
-                    if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
-                    {
-                        setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
-                    }
+                    set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+//                    std::cout<<"a gasit vin de soi "<<getAlimentPrice()<<'\n';
                 }
             }
         }
-
+        std::cout<<"a gasit cartof "<<getAlimentPrice()<<'\n';
     }
 
     Cartof(char _aliment_din_stoc[])
@@ -67,6 +51,8 @@ public:
         std::string _tip;
         _my_stream>>_tip;
         setTip(_tip);
+
+        proprietati_complet = _tip;
     }
 
 	Cartof(int _cantitate)

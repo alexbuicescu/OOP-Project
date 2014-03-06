@@ -11,11 +11,11 @@ public:
     Jucarie(std::vector<std::string> proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
-        setAlimentPrice(pret_maxim);
+        setAlimentPrice(-1);
 
         if(proprietati.size() >= 2)
         {
-            setNume(proprietati[1]);
+            setNumeJucarie(proprietati[1]);
         }
 
         for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
@@ -23,29 +23,14 @@ public:
             ///daca in stoc am o jucarie
             if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "jucarie")
             {
-                ///daca cumparatorul vrea o anumita jucarie
-                if(getNume() != "")
+                if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getNumeJucarie()) != std::string::npos)
                 {
-                    ///daca i-am gasit jucaria, o iau pe cea mai ieftina
-                    if(getNume() == ((Jucarie*)(magazinul_meu->getAlimentFromStock(i)))->getNume())
-                    {
-                        if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
-                        {
-                            setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
-                        }
-                        std::cout<<"a gasit jucaria cu numele: "<<getNume()<<'\n';
-                    }
-                }
-                else
-                ///daca cumparatorul nu a dat un nume, iau cea mai ieftina jucarie posibila
-                {
-                    if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
-                    {
-                        setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
-                    }
+                    set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+//                    std::cout<<"a gasit vin de soi "<<getAlimentPrice()<<'\n';
                 }
             }
         }
+        std::cout<<"a gasit jucarie "<<getAlimentPrice()<<'\n';
     }
 
     Jucarie(char _aliment_din_stoc[])
@@ -62,7 +47,9 @@ public:
 
         std::string _nume;
         _my_stream>>_nume;
-        setNume(_nume);
+        setNumeJucarie(_nume);
+
+        proprietati_complet = _nume;
     }
 
 	Jucarie(int _cantitate)
@@ -77,12 +64,12 @@ public:
 
 	}
 
-	void setNume(std::string _nume)
+	void setNumeJucarie(std::string _nume)
 	{
 	    nume = _nume;
 	}
 
-	std::string getNume()
+	std::string getNumeJucarie()
 	{
 	    return nume;
 	}

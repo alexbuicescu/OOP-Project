@@ -31,6 +31,14 @@ void inchide_magazin();
 
 int main()
 {
+//    std::string str1 = "q";
+//    std::string str2 = "asda";
+//
+//    if(str2.find(str1) != std::string::npos)
+//    {
+//        std::cout<<"found"<<'\n';
+//    }
+
     deschide_magazin();
     inchide_magazin();
 
@@ -116,6 +124,22 @@ std::string char_to_string(char _cuvant[])
 void parse_numele_alimentului(std::string _aliment)
 {
 
+}
+
+Aliment* get_cel_mai_ieftin_vin(std::vector<std::string> proprietati)
+{
+    Aliment *p1 = new Vin_varsat(proprietati);
+    Aliment *p2 = new Vin_de_soi(proprietati);
+
+    if(p1->getAlimentPrice() < p2->getAlimentPrice())
+    {
+        std::cout<<"a gasit vin cu pretul "<<p2->getAlimentPrice()<<'\n';
+        delete p1;
+        return p2;
+    }
+    std::cout<<"a gasit vin cu pretul "<<p1->getAlimentPrice()<<'\n';
+    delete p2;
+    return p1;
 }
 
 void add_produse_valabile_din_stoc(std::string _nume_fisier_intrare)
@@ -216,19 +240,19 @@ void serveste_clienti(std::string _nume_fisier_intrare)
                 _aliment_curent = new Varza(proprietati);
             }
             else
-            if(strstr(numele_alimentului.c_str(), "vin"))
-            {
-                if(numele_alimentului == "vin_varsat")
-                {
-                    _aliment_curent = new Vin_varsat(proprietati);
-                }
-                else
-                if(numele_alimentului == "vin_de_soi")
-                {
-                    _aliment_curent = new Vin_de_soi(proprietati);
-                }
-            }
-            else
+//            if(strstr(numele_alimentului.c_str(), "vin"))
+//            {
+//                if(numele_alimentului == "vin_varsat")
+//                {
+//                    _aliment_curent = new Vin_varsat(proprietati);
+//                }
+//                else
+//                if(numele_alimentului == "vin_de_soi")
+//                {
+//                    _aliment_curent = new Vin_de_soi(proprietati);
+//                }
+//            }
+//            else
             if(numele_alimentului == "faina")
             {
                 _aliment_curent = new Faina(proprietati);
@@ -247,6 +271,23 @@ void serveste_clienti(std::string _nume_fisier_intrare)
             if(numele_alimentului == "cartof")
             {
                 _aliment_curent = new Cartof(proprietati);
+            }
+            else
+            if(numele_alimentului == "vin")
+            {
+                _aliment_curent = get_cel_mai_ieftin_vin(proprietati);
+            }
+            else
+            if(numele_alimentului == "vin_varsat")
+            {
+                _aliment_curent = new Vin_varsat(proprietati);
+                std::cout<<"a gasit vin varsat "<<_aliment_curent->getAlimentPrice()<<'\n';
+            }
+            else
+            if(numele_alimentului == "vin_de_soi")
+            {
+                _aliment_curent = new Vin_de_soi(proprietati);
+                std::cout<<"a gasit vin de soi "<<_aliment_curent->getAlimentPrice()<<'\n';
             }
 
             fin>>numele_alimentului;

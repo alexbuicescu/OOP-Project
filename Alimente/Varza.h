@@ -13,20 +13,21 @@ public:
     Varza(std::vector<std::string> proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
-        setAlimentPrice(pret_maxim);
+        setAlimentPrice(-1);
 
         for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
         {
             ///daca in stoc am o varza
             if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "varza")
             {
-                if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
-                {
-                    setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
-                }
+                set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+//                if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
+//                {
+//                    setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
+//                }
             }
-
         }
+        std::cout<<"a gasit varza "<<getAlimentPrice()<<'\n';
     }
 
     Varza(char _aliment_din_stoc[])

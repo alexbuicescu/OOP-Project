@@ -17,20 +17,38 @@ public:
     Vin_varsat(std::vector<std::string> proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
-        setAlimentPrice(pret_maxim);
+        setAlimentPrice(-1);
 
         for(int i = 1; i < proprietati.size(); i++)
         {
             if(proprietati[i] == "rosu" || proprietati[i] == "alb")
             {
-                culoarea_vinului = proprietati[i];
+                setCuloare(proprietati[i]);
+//                culoarea_vinului = proprietati[i];
             }
             else
             if(proprietati[i] == "sec" || proprietati[i] == "dulce")
             {
-                soiul_vinului = proprietati[i];
+                setSoi(proprietati[i]);
+//                soiul_vinului = proprietati[i];
             }
         }
+
+
+        for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+        {
+            ///daca in stoc am un vin
+            if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "vin_varsat")
+            {
+                if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getCuloare()) != std::string::npos &&
+                   magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getSoi()) != std::string::npos)
+                {
+                    set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+//                    std::cout<<"a gasit vin varsat "<<getAlimentPrice()<<'\n';
+                }
+            }
+        }
+//        std::cout<<"a gasit vin varsat "<<getAlimentPrice()<<'\n';
     }
 
     Vin_varsat(char _aliment_din_stoc[])
@@ -52,6 +70,8 @@ public:
         std::string _soi;
         _my_stream>>_soi;
         setSoi(_soi);
+
+        proprietati_complet = _culoare + " " + _soi;
     }
 
 	Vin_varsat(int _cantitate)
@@ -75,6 +95,16 @@ public:
 	{
 	    culoarea_vinului = _culoarea_vinului;
 	}
+
+	std::string getSoi()
+	{
+	    return soiul_vinului;
+	}
+
+	std::string getCuloare()
+	{
+	    return culoarea_vinului;
+	}
 };
 
 class Vin_de_soi : public Aliment, public Mod_de_vanzare
@@ -91,7 +121,7 @@ public:
     Vin_de_soi(std::vector<std::string> proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
-        setAlimentPrice(pret_maxim);
+        setAlimentPrice(-1);
 
         for(int i = 1; i < proprietati.size(); i++)
         {
@@ -110,11 +140,40 @@ public:
                 an_producere = atoi(proprietati[i].c_str());
             }
             else
+            if(proprietati[i] == "Franta" || proprietati[i] == "Argentina" || proprietati[i] == "Chile" || proprietati[i] == "Australia")
+            {
+                Tara_de_origine = proprietati[i];
+            }
+            else
             ///numele vinului e singurul care a mai putut ramane
             {
                 numele_vinului = proprietati[i];
             }
         }
+        std::string an = "";
+        if(an_producere != 0)
+        {
+            an = ToString(an_producere);
+        }
+
+        for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+        {
+            ///daca in stoc am un vin
+            if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "vin_de_soi")
+            {
+                if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(numele_vinului) != std::string::npos &&
+                   magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(an) != std::string::npos &&
+                   magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(soiul_vinului) != std::string::npos &&
+                   magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(culoarea_vinului) != std::string::npos &&
+                   magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(Tara_de_origine) != std::string::npos)
+                {
+                    set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+//                    std::cout<<"a gasit vin de soi "<<getAlimentPrice()<<'\n';
+                }
+            }
+        }
+//        std::cout<<"'"<<numele_vinului<<"' "<<"'"<<an_producere<<"' "<<"'"<<numele_vinului<<"' "<<"'"<<numele_vinului<<"' "<<"'"<<numele_vinului<<'\n';
+//        std::cout<<"a gasit vin de soi "<<getAlimentPrice()<<'\n';
     }
 
     Vin_de_soi(char _aliment_din_stoc[])
@@ -131,7 +190,7 @@ public:
 
         std::string _nume;
         _my_stream>>_nume;
-        setNume(_nume);
+        setNumeVin(_nume);
 
         std::string _culoare;
         _my_stream>>_culoare;
@@ -148,6 +207,8 @@ public:
         int _an;
         _my_stream>>_an;
         setAn(_an);
+
+        proprietati_complet = _nume + " " + _culoare + " " + _soi + " " + _tara + " " + ToString(_an);
     }
 
 	Vin_de_soi(int _cantitate, std::string _soi = "", std::string _tara_de_origine = "")
@@ -162,7 +223,7 @@ public:
 
 	}
 
-    void setNume(std::string _nume)
+    void setNumeVin(std::string _nume)
     {
         numele_vinului = _nume;
     }
@@ -185,6 +246,31 @@ public:
     void setAn(int _an)
     {
         an_producere = _an;
+    }
+
+    std::string getNumeVin()
+    {
+        return numele_vinului;
+    }
+
+    std::string getCuloare()
+    {
+        return culoarea_vinului;
+    }
+
+    std::string getSoi()
+    {
+        return soiul_vinului;
+    }
+
+    std::string getTara()
+    {
+        return Tara_de_origine;
+    }
+
+    int getAn()
+    {
+        return an_producere;
     }
 };
 
@@ -238,20 +324,34 @@ public:
         nume = _nume;
     }
 
+    Aliment* get_cel_mai_ieftin_vin(std::vector<std::string> proprietati)
+    {
+        Aliment *p1 = new Vin_varsat(proprietati);
+        Aliment *p2 = new Vin_de_soi(proprietati);
+
+        if(p1->getAlimentPrice() < p2->getAlimentPrice())
+        {
+            delete p1;
+            return p2;
+        }
+        delete p2;
+        return p1;
+    }
+
     Vin_de_soi* get_cel_mai_ieftin_soi()
     {
-        for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
-        {
-            return (Vin_de_soi*)magazinul_meu->getAlimentFromStock(i);
-        }
+//        for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+//        {
+//            return (Vin_de_soi*)magazinul_meu->getAlimentFromStock(i);
+//        }
     }
 
     Vin_varsat* get_cel_mai_ieftin_varsat()
     {
-        for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
-        {
-            return (Vin_varsat*)magazinul_meu->getAlimentFromStock(i);
-        }
+//        for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+//        {
+//            return (Vin_varsat*)magazinul_meu->getAlimentFromStock(i);
+//        }
     }
 };
 

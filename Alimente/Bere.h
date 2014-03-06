@@ -23,7 +23,7 @@ public:
     Bere(std::vector<std::string> proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
-        setAlimentPrice(pret_maxim);
+        setAlimentPrice(-1);
 
         for(int i = 1; i < proprietati.size(); i++)
         {
@@ -42,58 +42,15 @@ public:
             ///daca in stoc am o bere
             if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "bere")
             {
-                ///daca stiu ca e blonda sau bruna
-                if(getTip() != "")
+                if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getBrand()) != std::string::npos &&
+                   magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getTip()) != std::string::npos)
                 {
-                    if(getTip() == ((Bere*)(magazinul_meu->getAlimentFromStock(i)))->getTip())
-                    {
-                        ///daca stiu ce brand este
-                        if(getBrand() != "")
-                        {
-                            if(getBrand() == ((Bere*)(magazinul_meu->getAlimentFromStock(i)))->getBrand())
-                            {
-                                if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
-                                {
-                                    setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
-                                }
-                                std::cout<<"a gasit bere cu brand: "<<getBrand()<<' '<<getAlimentPrice()<<'\n';
-                            }
-                        }
-                        else
-                        {
-                            if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
-                            {
-                                setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
-                            }
-                            std::cout<<"a gasit bere cu tip: "<<getTip()<<' '<<getAlimentPrice()<<'\n';
-                        }
-                    }
-                }
-                else
-                {
-                    ///daca stiu ce brand este
-                    if(getBrand() != "")
-                    {
-                        if(getBrand() == ((Bere*)(magazinul_meu->getAlimentFromStock(i)))->getBrand())
-                        {
-                            if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
-                            {
-                                setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
-                            }
-                            std::cout<<"a gasit bere cu brand: "<<getBrand()<<' '<<getAlimentPrice()<<'\n';
-                        }
-                    }
-                    else
-                    {
-                        if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
-                        {
-                            setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
-                        }
-                        std::cout<<"a gasit bere cu tip: "<<getTip()<<' '<<getAlimentPrice()<<'\n';
-                    }
+                    set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+//                    std::cout<<"a gasit vin de soi "<<getAlimentPrice()<<'\n';
                 }
             }
         }
+        std::cout<<"a gasit bere "<<getAlimentPrice()<<'\n';
     }
 
     Bere(char _aliment_din_stoc[])
@@ -115,6 +72,8 @@ public:
         std::string _tip;
         _my_stream>>_tip;
         setTip(_tip);
+
+        proprietati_complet = _brand + " " + _tip;
     }
 
 	Bere(int _cantitate, std::string _brand, std::string _tip)
