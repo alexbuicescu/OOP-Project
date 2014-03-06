@@ -89,8 +89,10 @@ void get_proprietati_aliment(char aliment[], std::vector<std::string> &prop)
             {
                 proprietate += aliment[i]; ///change to .append TO-DO!!!
             }
-
-        prop.push_back(proprietate);
+        if(proprietate != "")
+        {
+            prop.push_back(proprietate);
+        }
         proprietate = "";
     }
 //    std::cout<<aliment<<'\n';
