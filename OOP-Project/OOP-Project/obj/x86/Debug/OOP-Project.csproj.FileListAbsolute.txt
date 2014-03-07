@@ -6,3 +6,4 @@ C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debu
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP-Project.exe
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP-Project.pdb
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP_Project.Zi_noua.resources
+C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP-Project.csprojResolveAssemblyReference.cache

@@ -13,7 +13,7 @@ namespace OOP_Project
     {
         public List<Label> listaProduseLabel = new List<Label>();
         public List<Button> listaButoane = new List<Button>();
-        Dictionary<Button, String> hashDeButoane = new Dictionary<Button, String>();
+        public Dictionary<Button, String> hashDeButoane = new Dictionary<Button, String>();
 
         int nr_of_days = 0;
 
@@ -117,7 +117,7 @@ namespace OOP_Project
 
         private void buton_adauga_zi_noua_Click(object sender, EventArgs e)
         {
-            Zi_noua _val = new Zi_noua();
+            Zi_noua _val = new Zi_noua(this);
             _val.Show();
         }
 
@@ -141,7 +141,7 @@ namespace OOP_Project
         public void createLabel(int xPosition, int yPosition, int widthSize, int heightSize, String text, ref Label buton)
         {
             //buton = new Button();
-            buton.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            buton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             buton.Location = new System.Drawing.Point(xPosition, yPosition);
             buton.Name = "button1"; ///kind of random, doesn't mater
             buton.AutoSize = true;

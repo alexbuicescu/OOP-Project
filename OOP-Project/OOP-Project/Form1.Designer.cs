@@ -42,6 +42,7 @@
             this.label_cost_total = new System.Windows.Forms.Label();
             this.label_pret_total = new System.Windows.Forms.Label();
             this.label_canitate_totala = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -204,12 +205,22 @@
             this.label_canitate_totala.TabIndex = 5;
             this.label_canitate_totala.Text = "Cantitatea de produse vandute:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(435, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(985, 509);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.buton_adauga_zi_noua);
             this.Controls.Add(this.panel1);
@@ -239,6 +250,7 @@
         public System.Windows.Forms.Label label_nr_cost;
         public System.Windows.Forms.Label label_nr_pret;
         public System.Windows.Forms.Label label_nr_cantitate;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -22,9 +22,13 @@ namespace OOP_Project
         int nr_of_aliments = 0;
         int nr_of_iterations = 0;
 
-        public Zi_noua()
+        Form1 initial_form;
+
+        public Zi_noua(Form1 formul_initial)
         {
             InitializeComponent();
+
+            initial_form = formul_initial;
 
             lastY = textBox1.Location.Y;
             
@@ -179,24 +183,24 @@ namespace OOP_Project
                 }
             }
 
-            /*int currentPositionX = Form1. .lista .Location.X, currentPositionY = buton_prototip_zi.Location.Y;
-            int buttonWidth = buton_prototip_zi.Size.Width, buttonHeight = buton_prototip_zi.Size.Height;
+            int buttonWidth = initial_form.buton_prototip_zi.Size.Width, buttonHeight = initial_form.buton_prototip_zi.Size.Height;
             int theGapBetweenButtons = 15;//15 pixels
 
-            for (int i = 0; i < nr_of_days; i++)
-            {
-                Button buton = new Button();//null
-                createButton(currentPositionX, currentPositionY, buttonWidth, buttonHeight, "Ziua " + (i + 1).ToString(), ref buton);
+            int currentPositionX = initial_form.listaButoane[initial_form.listaButoane.Count - 1].Location.X,
+                currentPositionY = initial_form.listaButoane[initial_form.listaButoane.Count - 1].Location.Y + buttonHeight + theGapBetweenButtons;
 
-                listaButoane.Add(buton);
-                hashDeButoane.Add(buton, buton.Text);
+
+                Button buton = new Button();//null
+                initial_form.createButton(currentPositionX, currentPositionY, buttonWidth, buttonHeight, "Ziua " + (initial_form.listaButoane.Count + 1).ToString(), ref buton);
+
+                initial_form.listaButoane.Add(buton);
+                initial_form.hashDeButoane.Add(buton, buton.Text);
 
                 //MessageBox.Show(buton.Text);
                 //Debug.WriteLine(buton.Text);
 
-                currentPositionY += buttonHeight + theGapBetweenButtons;
-            }
-            */
+            
+
             Close();
         }
 
@@ -269,6 +273,18 @@ namespace OOP_Project
         private void button4_Click(object sender, EventArgs e)
         {
             Form1 f = new Form1();
+        }
+
+        private void Zi_noua_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                Process[] proc = Process.GetProcessesByName("OOP-LAB");
+                proc[0].Kill();
+            }
+            catch
+            {
+            }
         }
     }
 }
