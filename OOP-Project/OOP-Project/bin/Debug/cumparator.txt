@@ -1,4 +1,4 @@
 next
-varza 20
+varza 3
 finish
 

@@ -37,6 +37,7 @@ public:
         return size_of_list;
     }
 
+    ///must change the way it removes elments because order is important
     void remove_from_list(Aliment *_aliment)
     {
         for(int i = 0; i < size_of_list; i++)

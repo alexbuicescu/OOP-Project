@@ -159,7 +159,7 @@ namespace OOP_Project
                 try
                 {
                     string text = System.IO.File.ReadAllText("pret client curent.txt");
-                    MessageBox.Show("Pretul total al alimentelor este: " + text + " de LEI");
+                    MessageBox.Show("Pretul total al alimentelor este: " + text + " de LEI!" + "\n" + "Daca pretul nu apare, mai apasati inca o data pe butonul Vezi Pret, e posibil ca pretul sa nu fi fost calculat inca.");
                     done = true;
                 }
                 catch
@@ -198,8 +198,6 @@ namespace OOP_Project
 
                 //MessageBox.Show(buton.Text);
                 //Debug.WriteLine(buton.Text);
-
-            
 
             Close();
         }

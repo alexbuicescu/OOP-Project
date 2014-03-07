@@ -18,6 +18,7 @@ public:
         setQuantity(atof(proprietati[0].c_str()));
         setAlimentPrice(-1);
 
+        ///setez proprietatile alimentului
         for(int i = 1; i < proprietati.size(); i++)
         {
             if(proprietati[i] == "rosu" || proprietati[i] == "alb")
@@ -30,7 +31,6 @@ public:
                 setSoi(proprietati[i]);
             }
         }
-
 
         for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
         {
@@ -111,6 +111,7 @@ public:
         setQuantity(atof(proprietati[0].c_str()));
         setAlimentPrice(-1);
 
+        ///setez proprietatile alimentului
         for(int i = 1; i < proprietati.size(); i++)
         {
             if(proprietati[i] == "rosu" || proprietati[i] == "alb")
@@ -138,6 +139,8 @@ public:
                 setNumeVin(proprietati[i]);
             }
         }
+
+        ///daca anul nu mi s-a dat, atunci cand caut vinul cel mai bun, o sa omit compararea anului, facand anul "" (nu 0)
         std::string an = "";
         if(getAn() != 0)
         {

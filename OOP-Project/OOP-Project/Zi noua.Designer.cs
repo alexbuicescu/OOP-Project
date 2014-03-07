@@ -192,7 +192,7 @@
             this.ClientSize = new System.Drawing.Size(691, 509);
             this.Controls.Add(this.panel1);
             this.Name = "Zi_noua";
-            this.Text = "Zi_noua";
+            this.Text = "Zi noua";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Zi_noua_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

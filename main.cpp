@@ -3,7 +3,7 @@
 #include <cstring>
 #include <stdlib.h>
 #include <vector>
-#include <windows.h>//include <unistd.h> - unix
+//#include <windows.h>//include <unistd.h> - unix
 
 #include "Magazin.h"
 #include "ListaMagazin.h"
@@ -39,6 +39,7 @@ Aliment* get_cel_mai_ieftin_vin(std::vector<std::string> proprietati)
     Aliment *p1 = new Vin_varsat(proprietati);
     Aliment *p2 = new Vin_de_soi(proprietati);
 
+    ///daca vinul varsat are un profit mai mic, atunci iau vinul de soi
     if(p1->getAlimentPrice() < p2->getAlimentPrice())
     {
         delete p1;
@@ -101,23 +102,47 @@ void add_produse_valabile_din_stoc(std::string _nume_fisier_intrare)
             pret_maxim = _aliment->getAlimentPrice();
         }
     }
+
+    ///salvez si pretul maxim
     pret_maxim = (int)pret_maxim + 2;
+}
+
+void loopUntilRead(std::string path, std::string string_to_compare)
+{
+    std::string readed_string = "";
+    while(readed_string != string_to_compare)
+    {
+        std::ifstream fin(path.c_str());
+        fin>>readed_string;
+//                Sleep(1000); //usleep(1000) - unix
+    }
+    std::ofstream fout2(path.c_str());
+    fout2<<"";
+    fout2.close();
+}
+
+std::string loopUntilRead(std::string path, std::string string_to_compare1, std::string string_to_compare2)
+{
+    std::string readed_string = "";
+    while(readed_string != string_to_compare1 && readed_string != string_to_compare2)
+    {
+        std::ifstream fin(path.c_str());
+        fin>>readed_string;
+//                Sleep(1000); //usleep(1000) - unix
+    }
+    std::ofstream fout2(path.c_str());
+    fout2<<"";
+    fout2.close();
+
+    return readed_string;
 }
 
 void serveste_clienti(std::string _nume_fisier_intrare)
 {
-    std::string _decizie2 = "";
-    while(_decizie2 != "next")
-    {
-        std::ifstream fin2("decizie cumparator.txt");
-        fin2>>_decizie2;
-//                Sleep(1000); //usleep(1000) - unix
-    }
-    std::ofstream fout2("decizie cumparator.txt");
-    fout2<<"";
-    fout2.close();
+    ///asteapta pana cand introduce primul client lista de cumparaturi
+    loopUntilRead("decizie cumparator.txt", "next");
 
-    std::string action = _decizie2;
+    std::string action = "next";
 
     while(action != "stop")
     {
@@ -135,9 +160,9 @@ void serveste_clienti(std::string _nume_fisier_intrare)
         {
             ///citesc proprietatile alimentului (calitate, an productie, etc.)
             fin.getline(rand_citit, 1000);
-
             std::vector<std::string> proprietati;
             magazinul_meu->get_proprietati_aliment(rand_citit, proprietati);
+
 
             Aliment *_aliment_curent;
 
@@ -186,21 +211,13 @@ void serveste_clienti(std::string _nume_fisier_intrare)
         }
         if(numele_alimentului == "finish")
         {
-            std::ofstream fout3("pret client curent.txt");
-            fout3<<magazinul_meu->getPretTotalClient();
-            fout3.close();
+            ///afisez pretul corespunzator listei de cumparaturi a clientului
+            std::ofstream fout_pret_client("pret client curent.txt");
+            fout_pret_client<<magazinul_meu->getPretTotalClient();
+            fout_pret_client.close();
 
-            ///cere pretul
-            std::string _decizie = "";
-            while(_decizie != "da" && _decizie != "nu")
-            {
-                std::ifstream fin3("decizie cumparator.txt");
-                fin3>>_decizie;
-//                Sleep(1000); //usleep(1000) - unix
-            }
-            std::ofstream fout4("decizie cumparator.txt");
-            fout4<<"";
-            fout4.close();
+            ///vad daca clientul doreste sa cumpere sau nu
+            std::string _decizie = loopUntilRead("decizie cumparator.txt", "da", "nu");
 
             if(_decizie == "da")
             {
@@ -214,29 +231,19 @@ void serveste_clienti(std::string _nume_fisier_intrare)
             magazinul_meu->Remove_all_items_from_list_client();
         }
 
-        action = "";
-        while(action != "next" && action != "stop")
-        {
-            std::ifstream fin4("decizie cumparator.txt");
-            fin4>>action;
-//                Sleep(1000); //usleep(1000) - unix
-        }
+        ///astept pana cand apare un client nou, sau pana trebuie sa inchid ziua
+        action = loopUntilRead("decizie cumparator.txt", "next", "stop");
 
         if(action == "next")
         {
             std::cout<<'\n'<<"clientul urmator"<<'\n'<<'\n';
         }
 
-        std::ofstream fout4("decizie cumparator.txt");
-        fout4<<"";
-        fout4.close();
-
         std::ofstream fout5("pret client curent.txt");
         fout5<<"";
         fout5.close();
 
         fin.close();
-//        fin>>action;
     }
     magazinul_meu->inchide_ziua();
 }

@@ -103,6 +103,7 @@ public:
         mkdir(ToString("Baza de date/Ziua " + ToString(numar_de_zile + 1)).c_str());
         std::ofstream fout(ToString("Baza de date/Ziua " + ToString(numar_de_zile + 1) + "/db.txt").c_str());
 
+        ///trec incasarile totale la inceputul fisierului
         fout<<cantitate_totala_alimente_vandute<<' '<<pret_total_alimente_vandute<<' '<<cost_total_alimente_vandute<<' '<<
                 pret_total_alimente_vandute - cost_total_alimente_vandute<<'\n';
 
@@ -125,7 +126,7 @@ public:
     {
         std::string proprietate = "";
         int k = 0;
-        ///vad care este prima pozitie pe care nu se afla un spatiu
+        ///vad care este prima pozitie pe care nu se afla un spatiu pentru a fi sigur ca incep cu un cuvant si nu cu spatii
         for(k = 0; k < strlen(aliment); k++)
         {
             if(aliment[k] != ' ')
@@ -133,18 +134,24 @@ public:
                 break;
             }
         }
+
         for(int i = k; i < strlen(aliment); i++)
         {
-            if(aliment[i] != ' ' && i != strlen(aliment) - 1)
+            ///cat timp nu e spatiu construieste proprietatea noua, iar la spatiu o adauga in lista de proprietati
+            ///cand ajunge la ultimul caracter, verific daca e spatiu, iar daca nu e, continui construirea proprietatii
+            if(aliment[i] != ' ')
             {
-                proprietate += aliment[i]; ///change to .append TO-DO!!!
-                continue;
-            }
-            else
-                if(i == strlen(aliment) - 1)
+                if(i != strlen(aliment) - 1)
                 {
                     proprietate += aliment[i]; ///change to .append TO-DO!!!
+                    continue;
                 }
+                else
+                    if(i == strlen(aliment) - 1)
+                    {
+                        proprietate += aliment[i]; ///change to .append TO-DO!!!
+                    }
+            }
             if(proprietate != "")
             {
                 prop.push_back(proprietate);

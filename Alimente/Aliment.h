@@ -99,6 +99,7 @@ public:
 
 	void setProprietatiComplet(std::string _proprietati_complet)
 	{
+	    ///inlocuiesc mai intai toate spatiile cu _
 	    for(int i = 0; i < _proprietati_complet.size(); i++)
         {
             if(_proprietati_complet[i] == ' ')
@@ -106,6 +107,7 @@ public:
                 _proprietati_complet[i] = '_';
             }
         }
+
 	    proprietati_complet = _proprietati_complet;
 	}
 
