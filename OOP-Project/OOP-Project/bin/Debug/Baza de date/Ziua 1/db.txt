@@ -16,4 +16,3 @@ vin_de_soi_Chardonnay_alb_dulce_Australia_1873 55 54 0
 cartof_albi 12 10 0
 cartof_rosii 54 53 0
 jucarie_bomberman 2 1 1
-jucarie_toy 11 10 0

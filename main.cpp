@@ -106,15 +106,27 @@ void add_produse_valabile_din_stoc(std::string _nume_fisier_intrare)
 
 void serveste_clienti(std::string _nume_fisier_intrare)
 {
-    std::ifstream fin(_nume_fisier_intrare.c_str());
+    std::string _decizie2 = "";
+    while(_decizie2 != "next")
+    {
+        std::ifstream fin2("decizie cumparator.txt");
+        fin2>>_decizie2;
+//                Sleep(1000); //usleep(1000) - unix
+    }
+    std::ofstream fout2("decizie cumparator.txt");
+    fout2<<"";
+    fout2.close();
 
-    std::string action = "";
-    fin>>action;
-
-    char rand_citit[1000];
+    std::string action = _decizie2;
 
     while(action != "stop")
     {
+        std::ifstream fin(_nume_fisier_intrare.c_str());
+
+        fin>>action;
+
+        char rand_citit[1000];
+
         std::string numele_alimentului = "";
         fin>>numele_alimentului;
 
@@ -174,27 +186,59 @@ void serveste_clienti(std::string _nume_fisier_intrare)
         }
         if(numele_alimentului == "finish")
         {
-            std::ofstream fout("pret client curent.txt");
-            fout<<magazinul_meu->getPretTotalClient();
+            std::ofstream fout3("pret client curent.txt");
+            fout3<<magazinul_meu->getPretTotalClient();
+            fout3.close();
 
             ///cere pretul
-//            std::string _decizie = "";
-//            while(_decizie == "")
-//            {
-//                std::ifstream fin("decizie cumparator.txt");
-//                fin>>_decizie;
+            std::string _decizie = "";
+            while(_decizie != "da" && _decizie != "nu")
+            {
+                std::ifstream fin3("decizie cumparator.txt");
+                fin3>>_decizie;
 //                Sleep(1000); //usleep(1000) - unix
-//            }
-//
-//            if(_decizie == "da")
-//            {
-//                magazinul_meu->Sell_all_items_from_list();
-//            }
+            }
+            std::ofstream fout4("decizie cumparator.txt");
+            fout4<<"";
+            fout4.close();
+
+            if(_decizie == "da")
+            {
+                std::cout<<"am vandut tot"<<'\n';
+                magazinul_meu->Sell_all_items_from_list();
+            }
+            else
+            {
+                std::cout<<"nu am vandut nimic"<<'\n';
+            }
             magazinul_meu->Remove_all_items_from_list_client();
         }
 
-        fin>>action;
+        action = "";
+        while(action != "next" && action != "stop")
+        {
+            std::ifstream fin4("decizie cumparator.txt");
+            fin4>>action;
+//                Sleep(1000); //usleep(1000) - unix
+        }
+
+        if(action == "next")
+        {
+            std::cout<<'\n'<<"clientul urmator"<<'\n'<<'\n';
+        }
+
+        std::ofstream fout4("decizie cumparator.txt");
+        fout4<<"";
+        fout4.close();
+
+        std::ofstream fout5("pret client curent.txt");
+        fout5<<"";
+        fout5.close();
+
+        fin.close();
+//        fin>>action;
     }
+    magazinul_meu->inchide_ziua();
 }
 
 void deschide_magazin()

@@ -2,6 +2,7 @@
 #define MAGAZIN_H_INCLUDED
 
 #include "ListaMagazin.h"
+#include <direct.h>
 
 class Magazin
 {
@@ -65,9 +66,8 @@ public:
             lista_produse_din_stoc->getFromLista(indice_stoc)->setSoldQuantity(cantitate_dorita);
 
             cantitate_totala_alimente_vandute += cantitate_dorita;
-            pret_total_alimente_vandute += (lista_cumparaturi_client->getFromLista(i)->getAlimentPriceByQuantity());
-            cost_total_alimente_vandute += (lista_cumparaturi_client->getFromLista(i)->getAlimentCost() *
-                                            lista_cumparaturi_client->getFromLista(i)->getQuantity());
+            pret_total_alimente_vandute += (double)(lista_cumparaturi_client->getFromLista(i)->getAlimentPrice() * cantitate_dorita);
+            cost_total_alimente_vandute += (double)(lista_cumparaturi_client->getFromLista(i)->getAlimentCost() * cantitate_dorita);
         }
         lista_cumparaturi_client->clear_list();
     }
@@ -100,7 +100,8 @@ public:
         int numar_de_zile = 0;
         fin>>numar_de_zile;
 
-        std::ofstream fout("Baza de date/Ziua " + ToString(numar_de_zile + 1) + "/db.txt");
+        mkdir(ToString("Baza de date/Ziua " + ToString(numar_de_zile + 1)).c_str());
+        std::ofstream fout(ToString("Baza de date/Ziua " + ToString(numar_de_zile + 1) + "/db.txt").c_str());
 
         fout<<cantitate_totala_alimente_vandute<<' '<<pret_total_alimente_vandute<<' '<<cost_total_alimente_vandute<<' '<<
                 pret_total_alimente_vandute - cost_total_alimente_vandute<<'\n';

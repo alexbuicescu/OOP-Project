@@ -139,9 +139,9 @@ public:
             }
         }
         std::string an = "";
-        if(an_producere != 0)
+        if(getAn() != 0)
         {
-            an = ToString(an_producere);
+            an = ToString(getAn());
         }
 
         for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
@@ -150,7 +150,7 @@ public:
             if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "vin_de_soi")
             {
                 if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getNumeVin()) != std::string::npos &&
-                   magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getAn()) != std::string::npos &&
+                   magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(an) != std::string::npos &&
                    magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getSoi()) != std::string::npos &&
                    magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getCuloare()) != std::string::npos &&
                    magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getTara()) != std::string::npos)

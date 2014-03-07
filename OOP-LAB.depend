@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1394189361 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
+1394204163 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
 	<iostream>
 	<fstream>
 	<cstring>
@@ -43,8 +43,9 @@
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394191049 c:\users\alexandru\documents\github\oop-lab\logic\magazin.h
+1394193995 c:\users\alexandru\documents\github\oop-lab\logic\magazin.h
 	"ListaMagazin.h"
+	<direct.h>
 
 1394186997 c:\users\alexandru\documents\github\oop-lab\logic\listamagazin.h
 	"Aliment.h"
@@ -75,7 +76,7 @@
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394185797 c:\users\alexandru\documents\github\oop-lab\alimente\vin.h
+1394193974 c:\users\alexandru\documents\github\oop-lab\alimente\vin.h
 	<sstream>
 	"Values.h"
 	"Aliment.h"

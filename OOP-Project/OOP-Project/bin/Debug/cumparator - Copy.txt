@@ -18,7 +18,7 @@ faina 2 3
 varza 1
 vin 3
 vin 4 alb
-vin_varsat 5 rosu
+vin_varsat 5 rosu 1
 bere 2 Tuborg
 jucarie 1 bomberman
 vin 2
