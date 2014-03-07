@@ -1,4 +1,5 @@
 next
-varza 3
+varza 1
+faina 1
 finish
 

@@ -216,6 +216,8 @@ void serveste_clienti(std::string _nume_fisier_intrare)
             fout_pret_client<<magazinul_meu->getPretTotalClient();
             fout_pret_client.close();
 
+            std::cout<<"pretul total este: "<<magazinul_meu->getPretTotalClient()<<'\n';
+
             ///vad daca clientul doreste sa cumpere sau nu
             std::string _decizie = loopUntilRead("decizie cumparator.txt", "da", "nu");
 
@@ -237,6 +239,10 @@ void serveste_clienti(std::string _nume_fisier_intrare)
         if(action == "next")
         {
             std::cout<<'\n'<<"clientul urmator"<<'\n'<<'\n';
+        }
+        else
+        {
+            std::cout<<"inchide magazin"<<'\n';
         }
 
         std::ofstream fout5("pret client curent.txt");

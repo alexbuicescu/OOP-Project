@@ -121,14 +121,17 @@ namespace OOP_Project
 
             for (int i = 0; i < listaProduse.Count; i++)
             {
-                string[] elemente = listaProduse[i].Text.Split(' ');
-                _produs += elemente[0] + " " + listaCantitate[i].Text;
-
-                for (int j = 1; j < elemente.Length; j++)
+                if (listaProduse[i].Text != "")
                 {
-                    _produs += " " + elemente[j];
+                    string[] elemente = listaProduse[i].Text.Split(' ');
+                    _produs += elemente[0] + " " + listaCantitate[i].Text;
+
+                    for (int j = 1; j < elemente.Length; j++)
+                    {
+                        _produs += " " + elemente[j];
+                    }
+                    _produs += '\n';
                 }
-                _produs += '\n';
             }
 
             _produs += "finish\n\n";
@@ -149,6 +152,8 @@ namespace OOP_Project
                 {
                 }
             }
+
+            MessageBox.Show(text2);
 
             nr_of_iterations = 0;
             timer1.Start();
@@ -199,35 +204,11 @@ namespace OOP_Project
                 //MessageBox.Show(buton.Text);
                 //Debug.WriteLine(buton.Text);
 
-            Close();
+            //Close();
         }
 
         private void buton_cumpara_produsele_Click(object sender, EventArgs e)
         {
-            /*
-            System.IO.File.WriteAllText(@"decizie cumparator.txt", "next");
-            string _produs = "next\n";
-
-            for (int i = 0; i < listaProduse.Count; i++)
-            {
-                string[] elemente = listaProduse[i].Text.Split(' ');
-                _produs += elemente[0] + " " + listaCantitate[i].Text;
-
-                for (int j = 1; j < elemente.Length; j++)
-                {
-                    _produs += " " + elemente[j];
-                }
-                _produs += '\n';
-            }
-
-            _produs += "finish\n\n";
-
-            string text2 = "";// System.IO.File.ReadAllText("cumparator.txt");
-
-            text2 += _produs;
-
-            System.IO.File.WriteAllText(@"cumparator.txt", text2);*/
-
             bool done = false;
             while (!done)
             {
