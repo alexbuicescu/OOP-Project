@@ -5,11 +5,10 @@
 #include <iostream>
 #include <fstream>
 
-class Bere : public Aliment, public Mod_de_vanzare
+class Bere : public Varza ///public Aliment, public Mod_de_vanzare
 {
 private:
     std::string brand = "", tip = ""; ///tip poate fi doar blonda sau bruna
-    std::string tip_blonda = "blonda", tip_bruna = "bruna";
 public:
 
 ///TO-DO!! - supraincarca >> ca sa citesc Varza, Bere, etc.
@@ -20,7 +19,7 @@ public:
 //        in>>b->brand;
 //        return in;
 //    }
-    Bere(std::vector<std::string> proprietati)
+    Bere(std::vector<std::string> proprietati) : Varza(proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
         setAlimentPrice(-1);
@@ -45,18 +44,16 @@ public:
                 if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getBrand()) != std::string::npos &&
                    magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getTip()) != std::string::npos)
                 {
-                    set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
-//                    std::cout<<"a gasit vin de soi "<<getAlimentPrice()<<'\n';
+                    set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
                 }
             }
         }
-        std::cout<<"a gasit bere "<<getAlimentPrice()<<'\n';
     }
 
-    Bere(char _aliment_din_stoc[])
+    Bere(char _aliment_din_stoc[]) : Varza(_aliment_din_stoc)
     {
-	    unitate_de_masa = getBucata();
-        nume_aliment = "bere";
+	    setUnitateDeMasa(getBucata());
+        setNumeAliment("bere");
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -64,6 +61,10 @@ public:
         double _pret;
         _my_stream>>_pret;
         setAlimentPrice(_pret);
+
+        double _cost;
+        _my_stream>>_cost;
+        setAlimentCost(_cost);
 
         std::string _brand;
         _my_stream>>_brand;
@@ -73,26 +74,9 @@ public:
         _my_stream>>_tip;
         setTip(_tip);
 
-        proprietati_complet = _brand + " " + _tip;
+        setProprietatiComplet(_brand + " " + _tip);
     }
 
-	Bere(int _cantitate, std::string _brand, std::string _tip)
-	{
-	    unitate_de_masa = getBucata();
-        nume_aliment = "bere";
-	    brand = _brand;
-
-	    if(_tip == tip_blonda || _tip == tip_bruna)
-	    {
-	        tip = _tip;
-	    }
-	    else
-        {
-            ///Throw an exception here !!! TO-DO
-        }
-
-        setQuantity(_cantitate);
-	}
 	~Bere()
 	{
 

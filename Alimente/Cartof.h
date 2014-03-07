@@ -28,18 +28,16 @@ public:
             {
                 if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getTip()) != std::string::npos)
                 {
-                    set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
-//                    std::cout<<"a gasit vin de soi "<<getAlimentPrice()<<'\n';
+                    set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
                 }
             }
         }
-        std::cout<<"a gasit cartof "<<getAlimentPrice()<<'\n';
     }
 
     Cartof(char _aliment_din_stoc[])
     {
-        unitate_de_masa = getKg();
-        nume_aliment = "cartof";
+        setUnitateDeMasa(getKg());
+        setNumeAliment("cartof");
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -48,21 +46,17 @@ public:
         _my_stream>>_pret;
         setAlimentPrice(_pret);
 
+        double _cost;
+        _my_stream>>_cost;
+        setAlimentCost(_cost);
+
         std::string _tip;
         _my_stream>>_tip;
         setTip(_tip);
 
-        proprietati_complet = _tip;
+        setProprietatiComplet(_tip);
     }
 
-	Cartof(int _cantitate)
-	{
-        unitate_de_masa = getKg();
-        nume_aliment = "cartof";
-
-        setQuantity(_cantitate);
-        tip = "";
-	}
 	~Cartof()
 	{
 

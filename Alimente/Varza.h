@@ -20,20 +20,15 @@ public:
             ///daca in stoc am o varza
             if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "varza")
             {
-                set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
-//                if(getAlimentPrice() > magazinul_meu->getAlimentFromStock(i)->getAlimentPrice())
-//                {
-//                    setAlimentPrice(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice());
-//                }
+                set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
             }
         }
-        std::cout<<"a gasit varza "<<getAlimentPrice()<<'\n';
     }
 
     Varza(char _aliment_din_stoc[])
     {
-        unitate_de_masa = getBucata();
-        nume_aliment = "varza";
+        setUnitateDeMasa(getBucata());
+        setNumeAliment("varza");
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -41,15 +36,22 @@ public:
         double _pret;
         _my_stream>>_pret;
         setAlimentPrice(_pret);
+
+        double _cost;
+        _my_stream>>_cost;
+        setAlimentCost(_cost);
     }
 
-	Varza(double _cantitate)
+	void setQuantity(int _cantitate)
 	{
-        unitate_de_masa = getBucata();
-        nume_aliment = "varza";
-
-        setQuantity(_cantitate);
+	    askedQuantity = _cantitate;
 	}
+
+	int getQuantity()
+	{
+	    return (int)askedQuantity;
+	}
+
 	~Varza()
 	{
 

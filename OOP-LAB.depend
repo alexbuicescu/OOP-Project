@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1394117854 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
+1394189361 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
 	<iostream>
 	<fstream>
 	<cstring>
 	<stdlib.h>
 	<vector>
+	<windows.h>
 	"Magazin.h"
 	"ListaMagazin.h"
 	"Mod_de_vanzare.h"
@@ -42,30 +43,30 @@
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394112432 c:\users\alexandru\documents\github\oop-lab\logic\magazin.h
+1394191049 c:\users\alexandru\documents\github\oop-lab\logic\magazin.h
 	"ListaMagazin.h"
 
-1394112520 c:\users\alexandru\documents\github\oop-lab\logic\listamagazin.h
+1394186997 c:\users\alexandru\documents\github\oop-lab\logic\listamagazin.h
 	"Aliment.h"
 
-1394118318 c:\users\alexandru\documents\github\oop-lab\alimente\aliment.h
+1394187560 c:\users\alexandru\documents\github\oop-lab\alimente\aliment.h
 	"Magazin.h"
 	<sstream>
 
 1393505463 c:\users\alexandru\documents\github\oop-lab\logic\mod_de_vanzare.h
 
-1394118172 c:\users\alexandru\documents\github\oop-lab\alimente\varza.h
+1394185920 c:\users\alexandru\documents\github\oop-lab\alimente\varza.h
 	<sstream>
 	"Aliment.h"
 	"Values.h"
 	"Mod_de_vanzare.h"
 
-1394120176 c:\users\alexandru\documents\github\oop-lab\alimente\bere.h
+1394185793 c:\users\alexandru\documents\github\oop-lab\alimente\bere.h
 	<sstream>
 	<iostream>
 	<fstream>
 
-1394120037 c:\users\alexandru\documents\github\oop-lab\alimente\faina.h
+1394185927 c:\users\alexandru\documents\github\oop-lab\alimente\faina.h
 	"Values.h"
 	"Aliment.h"
 	"Mod_de_vanzare.h"
@@ -74,18 +75,18 @@
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394118632 c:\users\alexandru\documents\github\oop-lab\alimente\vin.h
+1394185797 c:\users\alexandru\documents\github\oop-lab\alimente\vin.h
 	<sstream>
 	"Values.h"
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394120109 c:\users\alexandru\documents\github\oop-lab\alimente\cartof.h
+1394185930 c:\users\alexandru\documents\github\oop-lab\alimente\cartof.h
 	"Aliment.h"
 	<sstream>
 	"Mod_de_vanzare.h"
 
-1394119927 c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.h
+1394185924 c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.h
 
 1393939509 c:\users\alexandru\documents\github\oop-lab\logic\values.h
 	"Magazin.h"

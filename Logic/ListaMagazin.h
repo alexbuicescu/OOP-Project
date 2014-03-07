@@ -50,13 +50,31 @@ public:
         }
     }
 
+    void remove_from_list(int _indice)
+    {
+        if(size_of_list)
+        {
+            delete lista_mea[_indice];
+            lista_mea[_indice] = lista_mea[--size_of_list];
+        }
+    }
+
     void clear_list()
     {
         for(int i = 0; i < size_of_list; i++)
         {
             delete lista_mea[i];
         }
+        size_of_list = 0;
     }
+
+	///returneaza nuemele alimentului din stoc corespunzator alimentului din lista clientului
+	std::string getNumeAlimentComplet(int _indice_aliment)
+	{
+        std::string nume = "";
+        nume = getFromLista(_indice_aliment)->getNumeAliment() + "_" + getFromLista(_indice_aliment)->get_proprietati_complet();
+        return nume;
+	}
 };
 
 

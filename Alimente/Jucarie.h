@@ -2,13 +2,13 @@
 #define JUCARIE_H_INCLUDED
 
 
-class Jucarie : public Aliment, public Mod_de_vanzare
+class Jucarie : public Varza/// public Aliment, public Mod_de_vanzare
 {
 private:
-    std::string nume = "";
+    std::string nume_jucarie = "";
 public:
 
-    Jucarie(std::vector<std::string> proprietati)
+    Jucarie(std::vector<std::string> proprietati) : Varza(proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
         setAlimentPrice(-1);
@@ -25,18 +25,16 @@ public:
             {
                 if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getNumeJucarie()) != std::string::npos)
                 {
-                    set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
-//                    std::cout<<"a gasit vin de soi "<<getAlimentPrice()<<'\n';
+                    set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
                 }
             }
         }
-        std::cout<<"a gasit jucarie "<<getAlimentPrice()<<'\n';
     }
 
-    Jucarie(char _aliment_din_stoc[])
+    Jucarie(char _aliment_din_stoc[]) : Varza(_aliment_din_stoc)
     {
-        unitate_de_masa = getBucata();
-        nume_aliment = "jucarie";
+        setUnitateDeMasa(getBucata());
+        setNumeAliment("jucarie");
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -45,33 +43,31 @@ public:
         _my_stream>>_pret;
         setAlimentPrice(_pret);
 
+        double _cost;
+        _my_stream>>_cost;
+        setAlimentCost(_cost);
+
         std::string _nume;
         _my_stream>>_nume;
         setNumeJucarie(_nume);
 
-        proprietati_complet = _nume;
+        setProprietatiComplet(_nume);
     }
 
-	Jucarie(int _cantitate)
-	{
-        unitate_de_masa = getBucata();
-        nume_aliment = "jucarie";
-
-        setQuantity(_cantitate);
-	}
 	~Jucarie()
 	{
 
 	}
 
-	void setNumeJucarie(std::string _nume)
+	void setNumeJucarie(std::string _nume_jucarie)
 	{
-	    nume = _nume;
+	    ///Verifica daca nu cumva mai exista numele TO-DO!!
+	    nume_jucarie = _nume_jucarie;
 	}
 
 	std::string getNumeJucarie()
 	{
-	    return nume;
+	    return nume_jucarie;
 	}
 };
 

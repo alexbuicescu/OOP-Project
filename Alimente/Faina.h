@@ -34,18 +34,16 @@ public:
             {
                 if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(_calitate) != std::string::npos)
                 {
-                    set_most_profitable_price(magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
-//                    std::cout<<"a gasit vin de soi "<<getAlimentPrice()<<'\n';
+                    set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
                 }
             }
         }
-        std::cout<<"a gasit faina "<<getAlimentPrice()<<'\n';
     }
 
     Faina(char _aliment_din_stoc[])
     {
-        unitate_de_masa = getKg();
-        nume_aliment = "faina";
+        setUnitateDeMasa(getKg());
+        setNumeAliment("faina");
 
         std::stringstream _my_stream;
         _my_stream<<_aliment_din_stoc;
@@ -54,6 +52,10 @@ public:
         _my_stream>>_pret;
         setAlimentPrice(_pret);
 
+        double _cost;
+        _my_stream>>_cost;
+        setAlimentCost(_cost);
+
         std::string not_important;
         _my_stream>>not_important;
 
@@ -61,25 +63,9 @@ public:
         _my_stream>>_calitate;
         setCalitate(_calitate);
 
-        proprietati_complet = ToString(_calitate);
+        setProprietatiComplet(ToString(_calitate));
     }
 
-	Faina(int _cantitate, int _calitate)
-	{
-        unitate_de_masa = getKg();
-        nume_aliment = "faina";
-
-        if(_calitate >= 1 && calitate <= 3)
-        {
-            calitate = _calitate;
-        }
-        else
-        {
-            ///Throw an exception!!! TO-DO
-        }
-
-        setQuantity(_cantitate);
-	}
 	~Faina()
 	{
 
