@@ -10,6 +10,11 @@ class Varza : public Aliment, public Mod_de_vanzare
 {
 public:
 
+    Varza()
+    {
+
+    }
+
     Varza(std::vector<std::string> proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
@@ -23,23 +28,6 @@ public:
                 set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
             }
         }
-    }
-
-    Varza(char _aliment_din_stoc[])
-    {
-        setUnitateDeMasa(getBucata());
-        setNumeAliment("varza");
-
-        std::stringstream _my_stream;
-        _my_stream<<_aliment_din_stoc;
-
-        double _pret;
-        _my_stream>>_pret;
-        setAlimentPrice(_pret);
-
-        double _cost;
-        _my_stream>>_cost;
-        setAlimentCost(_cost);
     }
 
 	void setQuantity(int _cantitate)
@@ -56,6 +44,23 @@ public:
 	{
 
 	}
+
+    friend std::ifstream& operator>>(std::ifstream& input_file, Varza *obj);
 };
+std::ifstream& operator>>(std::ifstream& input_file, Varza *obj)
+{
+    obj->setUnitateDeMasa(obj->getBucata());
+    obj->setNumeAliment("varza");
+
+    double _pret;
+    input_file>>_pret;
+    obj->setAlimentPrice(_pret);
+
+    double _cost;
+    input_file>>_cost;
+    obj->setAlimentCost(_cost);
+
+    return input_file;
+}
 
 #endif // VARZA_H_INCLUDED

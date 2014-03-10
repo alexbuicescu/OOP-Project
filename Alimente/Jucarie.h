@@ -8,6 +8,11 @@ private:
     std::string nume_jucarie = "";
 public:
 
+    Jucarie()
+    {
+
+    }
+
     Jucarie(std::vector<std::string> proprietati) : Varza(proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
@@ -31,29 +36,6 @@ public:
         }
     }
 
-    Jucarie(char _aliment_din_stoc[]) : Varza(_aliment_din_stoc)
-    {
-        setUnitateDeMasa(getBucata());
-        setNumeAliment("jucarie");
-
-        std::stringstream _my_stream;
-        _my_stream<<_aliment_din_stoc;
-
-        double _pret;
-        _my_stream>>_pret;
-        setAlimentPrice(_pret);
-
-        double _cost;
-        _my_stream>>_cost;
-        setAlimentCost(_cost);
-
-        std::string _nume;
-        _my_stream>>_nume;
-        setNumeJucarie(_nume);
-
-        setProprietatiComplet(_nume);
-    }
-
 	~Jucarie()
 	{
 
@@ -69,7 +51,30 @@ public:
 	{
 	    return nume_jucarie;
 	}
+
+    friend std::ifstream& operator>>(std::ifstream& input_file, Jucarie *obj);
 };
+std::ifstream& operator>>(std::ifstream& input_file, Jucarie *obj)
+{
+    obj->setUnitateDeMasa(obj->getBucata());
+    obj->setNumeAliment("jucarie");
+
+    double _pret;
+    input_file>>_pret;
+    obj->setAlimentPrice(_pret);
+
+    double _cost;
+    input_file>>_cost;
+    obj->setAlimentCost(_cost);
+
+    std::string _nume;
+    input_file>>_nume;
+    obj->setNumeJucarie(_nume);
+
+    obj->setProprietatiComplet(_nume);
+
+    return input_file;
+}
 
 
 #endif // JUCARIE_H_INCLUDED

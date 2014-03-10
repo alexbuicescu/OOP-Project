@@ -11,6 +11,11 @@ private:
     int calitate = 0; ///poate fi doar 1, 2 sau 3
 public:
 
+    Faina()
+    {
+
+    }
+
     Faina(std::vector<std::string> proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
@@ -40,32 +45,6 @@ public:
         }
     }
 
-    Faina(char _aliment_din_stoc[])
-    {
-        setUnitateDeMasa(getKg());
-        setNumeAliment("faina");
-
-        std::stringstream _my_stream;
-        _my_stream<<_aliment_din_stoc;
-
-        double _pret;
-        _my_stream>>_pret;
-        setAlimentPrice(_pret);
-
-        double _cost;
-        _my_stream>>_cost;
-        setAlimentCost(_cost);
-
-        std::string not_important;
-        _my_stream>>not_important;
-
-        int _calitate;
-        _my_stream>>_calitate;
-        setCalitate(_calitate);
-
-        setProprietatiComplet(ToString(_calitate));
-    }
-
 	~Faina()
 	{
 
@@ -80,7 +59,33 @@ public:
 	{
 	    return calitate;
 	}
+
+    friend std::ifstream& operator>>(std::ifstream& input_file, Faina *obj);
 };
+std::ifstream& operator>>(std::ifstream& input_file, Faina *obj)
+{
+    obj->setUnitateDeMasa(obj->getKg());
+    obj->setNumeAliment("faina");
+
+    double _pret;
+    input_file>>_pret;
+    obj->setAlimentPrice(_pret);
+
+    double _cost;
+    input_file>>_cost;
+    obj->setAlimentCost(_cost);
+
+    std::string not_important;
+    input_file>>not_important;
+
+    int _calitate;
+    input_file>>_calitate;
+    obj->setCalitate(_calitate);
+
+    obj->setProprietatiComplet(ToString(_calitate));
+
+    return input_file;
+}
 
 
 #endif // FAINA_H_INCLUDED

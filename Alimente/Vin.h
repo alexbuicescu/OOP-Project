@@ -13,6 +13,11 @@ private:
     std::string culoarea_vinului = "", soiul_vinului = "";
 public:
 
+    Vin_varsat()
+    {
+
+    }
+
     Vin_varsat(std::vector<std::string> proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
@@ -46,33 +51,6 @@ public:
         }
     }
 
-    Vin_varsat(char _aliment_din_stoc[])
-    {
-        setUnitateDeMasa(getVolum());
-        setNumeAliment("vin_varsat");
-
-        std::stringstream _my_stream;
-        _my_stream<<_aliment_din_stoc;
-
-        double _pret;
-        _my_stream>>_pret;
-        setAlimentPrice(_pret);
-
-        double _cost;
-        _my_stream>>_cost;
-        setAlimentCost(_cost);
-
-        std::string _culoare;
-        _my_stream>>_culoare;
-        setCuloare(_culoare);
-
-        std::string _soi;
-        _my_stream>>_soi;
-        setSoi(_soi);
-
-        setProprietatiComplet(_culoare + " " + _soi);
-    }
-
 	~Vin_varsat()
 	{
 
@@ -97,7 +75,33 @@ public:
 	{
 	    return soiul_vinului;
 	}
+
+    friend std::ifstream& operator>>(std::ifstream& input_file, Vin_varsat *obj);
 };
+std::ifstream& operator>>(std::ifstream& input_file, Vin_varsat *obj)
+{
+    obj->setUnitateDeMasa(obj->getVolum());
+    obj->setNumeAliment("vin_varsat");
+
+    double _pret;
+    input_file>>_pret;
+    obj->setAlimentPrice(_pret);
+
+    double _cost;
+    input_file>>_cost;
+    obj->setAlimentCost(_cost);
+
+    std::string _culoare;
+    input_file>>_culoare;
+    obj->setCuloare(_culoare);
+
+    std::string _soi;
+    input_file>>_soi;
+    obj->setSoi(_soi);
+
+    obj->setProprietatiComplet(_culoare + " " + _soi);
+    return input_file;
+}
 
 class Vin_de_soi : public Vin_varsat
 {
@@ -105,6 +109,11 @@ private:
     std::string numele_vinului = "", Tara_de_origine = "";
     int an_producere = 0;
 public:
+
+    Vin_de_soi()
+    {
+
+    }
 
     Vin_de_soi(std::vector<std::string> proprietati) : Vin_varsat(proprietati)
     {
@@ -164,45 +173,6 @@ public:
         }
     }
 
-    Vin_de_soi(char _aliment_din_stoc[]) : Vin_varsat(_aliment_din_stoc)
-    {
-        setUnitateDeMasa(getBucata());
-        setNumeAliment("vin_de_soi");
-
-        std::stringstream _my_stream;
-        _my_stream<<_aliment_din_stoc;
-
-        double _pret;
-        _my_stream>>_pret;
-        setAlimentPrice(_pret);
-
-        double _cost;
-        _my_stream>>_cost;
-        setAlimentCost(_cost);
-
-        std::string _nume;
-        _my_stream>>_nume;
-        setNumeVin(_nume);
-
-        std::string _culoare;
-        _my_stream>>_culoare;
-        setCuloare(_culoare);
-
-        std::string _soi;
-        _my_stream>>_soi;
-        setSoi(_soi);
-
-        std::string _tara;
-        _my_stream>>_tara;
-        setTara(_tara);
-
-        int _an;
-        _my_stream>>_an;
-        setAn(_an);
-
-        setProprietatiComplet(_nume + " " + _culoare + " " + _soi + " " + _tara + " " + ToString(_an));
-    }
-
 	~Vin_de_soi()
 	{
 
@@ -247,7 +217,45 @@ public:
 	{
 	    return (int)askedQuantity;
 	}
+
+    friend std::ifstream& operator>>(std::ifstream& input_file, Vin_de_soi *obj);
 };
+std::ifstream& operator>>(std::ifstream& input_file, Vin_de_soi *obj)
+{
+    obj->setUnitateDeMasa(obj->getBucata());
+    obj->setNumeAliment("vin_de_soi");
+
+    double _pret;
+    input_file>>_pret;
+    obj->setAlimentPrice(_pret);
+
+    double _cost;
+    input_file>>_cost;
+    obj->setAlimentCost(_cost);
+
+    std::string _nume;
+    input_file>>_nume;
+    obj->setNumeVin(_nume);
+
+    std::string _culoare;
+    input_file>>_culoare;
+    obj->setCuloare(_culoare);
+
+    std::string _soi;
+    input_file>>_soi;
+    obj->setSoi(_soi);
+
+    std::string _tara;
+    input_file>>_tara;
+    obj->setTara(_tara);
+
+    int _an;
+    input_file>>_an;
+    obj->setAn(_an);
+
+    obj->setProprietatiComplet(_nume + " " + _culoare + " " + _soi + " " + _tara + " " + ToString(_an));
+    return input_file;
+}
 
 
 #endif // VIN_H_INCLUDED

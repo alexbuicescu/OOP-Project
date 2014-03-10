@@ -101,6 +101,7 @@ namespace OOP_Project
         private void buton_vezi_pret_Click(object sender, EventArgs e)
         {
             buton_cumpara_produsele.Enabled = true;
+            buton_cumpara_produsele.BackColor = System.Drawing.Color.LightSteelBlue;
             bool done = false;
             while (!done)
             {
@@ -153,7 +154,7 @@ namespace OOP_Project
                 }
             }
 
-            MessageBox.Show(text2);
+            //MessageBox.Show(text2);
 
             nr_of_iterations = 0;
             timer1.Start();
@@ -204,7 +205,8 @@ namespace OOP_Project
                 //MessageBox.Show(buton.Text);
                 //Debug.WriteLine(buton.Text);
 
-            //Close();
+            System.Threading.Thread.Sleep(100);
+            Close();
         }
 
         private void buton_cumpara_produsele_Click(object sender, EventArgs e)
@@ -222,6 +224,7 @@ namespace OOP_Project
                 }
             }
             buton_cumpara_produsele.Enabled = false;
+            buton_cumpara_produsele.BackColor = System.Drawing.Color.Gold;
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -11,6 +11,11 @@ private:
     std::string tip = "";///poate fi doar rosii sau albi
 public:
 
+    Cartof()
+    {
+
+    }
+
     Cartof(std::vector<std::string> proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
@@ -34,29 +39,6 @@ public:
         }
     }
 
-    Cartof(char _aliment_din_stoc[])
-    {
-        setUnitateDeMasa(getKg());
-        setNumeAliment("cartof");
-
-        std::stringstream _my_stream;
-        _my_stream<<_aliment_din_stoc;
-
-        double _pret;
-        _my_stream>>_pret;
-        setAlimentPrice(_pret);
-
-        double _cost;
-        _my_stream>>_cost;
-        setAlimentCost(_cost);
-
-        std::string _tip;
-        _my_stream>>_tip;
-        setTip(_tip);
-
-        setProprietatiComplet(_tip);
-    }
-
 	~Cartof()
 	{
 
@@ -71,6 +53,29 @@ public:
 	{
 	    return tip;
 	}
+
+    friend std::ifstream& operator>>(std::ifstream& input_file, Cartof *obj);
 };
+std::ifstream& operator>>(std::ifstream& input_file, Cartof *obj)
+{
+    obj->setUnitateDeMasa(obj->getKg());
+    obj->setNumeAliment("cartof");
+
+    double _pret;
+    input_file>>_pret;
+    obj->setAlimentPrice(_pret);
+
+    double _cost;
+    input_file>>_cost;
+    obj->setAlimentCost(_cost);
+
+    std::string _tip;
+    input_file>>_tip;
+    obj->setTip(_tip);
+
+    obj->setProprietatiComplet(_tip);
+
+    return input_file;
+}
 
 #endif // CARTOFI_H_INCLUDED

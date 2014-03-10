@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1394211299 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
+1394483456 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
 	<iostream>
 	<fstream>
 	<cstring>
@@ -49,24 +49,24 @@
 1394212191 c:\users\alexandru\documents\github\oop-lab\logic\listamagazin.h
 	"Aliment.h"
 
-1394211716 c:\users\alexandru\documents\github\oop-lab\alimente\aliment.h
+1394484279 c:\users\alexandru\documents\github\oop-lab\alimente\aliment.h
 	"Magazin.h"
 	<sstream>
 
 1393505463 c:\users\alexandru\documents\github\oop-lab\logic\mod_de_vanzare.h
 
-1394185920 c:\users\alexandru\documents\github\oop-lab\alimente\varza.h
+1394483769 c:\users\alexandru\documents\github\oop-lab\alimente\varza.h
 	<sstream>
 	"Aliment.h"
 	"Values.h"
 	"Mod_de_vanzare.h"
 
-1394185793 c:\users\alexandru\documents\github\oop-lab\alimente\bere.h
+1394483804 c:\users\alexandru\documents\github\oop-lab\alimente\bere.h
 	<sstream>
 	<iostream>
 	<fstream>
 
-1394185927 c:\users\alexandru\documents\github\oop-lab\alimente\faina.h
+1394483804 c:\users\alexandru\documents\github\oop-lab\alimente\faina.h
 	"Values.h"
 	"Aliment.h"
 	"Mod_de_vanzare.h"
@@ -75,19 +75,21 @@
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394211412 c:\users\alexandru\documents\github\oop-lab\alimente\vin.h
+1394483745 c:\users\alexandru\documents\github\oop-lab\alimente\vin.h
 	<sstream>
 	"Values.h"
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394185930 c:\users\alexandru\documents\github\oop-lab\alimente\cartof.h
+1394483804 c:\users\alexandru\documents\github\oop-lab\alimente\cartof.h
 	"Aliment.h"
 	<sstream>
 	"Mod_de_vanzare.h"
 
-1394185924 c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.h
+1394483775 c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.h
 
 1393939509 c:\users\alexandru\documents\github\oop-lab\logic\values.h
 	"Magazin.h"
+
+1394484255 source:c:\users\alexandru\documents\github\oop-lab\alimente\aliment.cpp
 

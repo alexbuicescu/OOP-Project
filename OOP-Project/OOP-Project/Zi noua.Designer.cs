@@ -47,7 +47,7 @@
             // 
             this.buton_cumpara_produsele.AutoSize = true;
             this.buton_cumpara_produsele.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buton_cumpara_produsele.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buton_cumpara_produsele.BackColor = System.Drawing.Color.Gold;
             this.buton_cumpara_produsele.Enabled = false;
             this.buton_cumpara_produsele.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buton_cumpara_produsele.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

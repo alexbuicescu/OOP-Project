@@ -26,8 +26,31 @@ void serveste_clienti();
 void deschide_magazin();
 void inchide_magazin();
 
+//class Test
+//{
+//private:
+//    int valoare = 0;
+//public:
+//
+//    int getValoare()
+//    {
+//        return valoare;
+//    }
+//
+//friend std::istream& operator>>(std::istream& is, Test *obj);
+//};
+//
+//std::istream& operator>>(std::istream& is, Test *obj)
+//{
+//    is>>obj->valoare;
+//    return is;
+//}
+
 int main()
 {
+//    Test *p = new Test;
+//    std::cin>>p;
+//    std::cout<<p->getValoare();
     deschide_magazin();
     inchide_magazin();
 
@@ -51,48 +74,53 @@ Aliment* get_cel_mai_ieftin_vin(std::vector<std::string> proprietati)
 
 void add_produse_valabile_din_stoc(std::string _nume_fisier_intrare)
 {
-    char rand_citit[1000];
     std::string _nume_aliment = "";
     std::ifstream fin(_nume_fisier_intrare.c_str());
 
     while(fin>>_nume_aliment)
     {
-        fin.getline(rand_citit, 1000);
         Aliment *_aliment;
 
         if(_nume_aliment == "varza")
         {
-            _aliment = new Varza(rand_citit);
+            _aliment = new Varza();
+            fin>>(Varza*)_aliment;
         }
         else
         if(_nume_aliment == "faina")
         {
-            _aliment = new Faina(rand_citit);
+            _aliment = new Faina();
+            fin>>(Faina*)_aliment;
         }
         else
         if(_nume_aliment == "bere")
         {
-            _aliment = new Bere(rand_citit);
+            _aliment = new Bere();
+            fin>>(Bere*)_aliment;
         }
         else
         if(_nume_aliment == "vin_varsat")
         {
-            _aliment = new Vin_varsat(rand_citit);
+            _aliment = new Vin_varsat();
+            fin>>(Vin_varsat*)_aliment;
         }
         else
         if(_nume_aliment == "vin_de_soi")
         {
-            _aliment = new Vin_de_soi(rand_citit);
+            _aliment = new Vin_de_soi();
+            fin>>(Vin_de_soi*)_aliment;
         }
         else
         if(_nume_aliment == "cartofi")
         {
-            _aliment = new Cartof(rand_citit);
+            _aliment = new Cartof();
+            fin>>(Cartof*)_aliment;
         }
         else
         if(_nume_aliment == "jucarie")
         {
-            _aliment = new Jucarie(rand_citit);
+            _aliment = new Jucarie();
+            fin>>(Jucarie*)_aliment;
         }
 
         magazinul_meu->add_in_stoc(_aliment);
@@ -176,11 +204,6 @@ void serveste_clienti(std::string _nume_fisier_intrare)
                 _aliment_curent = new Faina(proprietati);
             }
             else
-            if(numele_alimentului == "bere")
-            {
-                _aliment_curent = new Bere(proprietati);
-            }
-            else
             if(numele_alimentului == "jucarie")
             {
                 _aliment_curent = new Jucarie(proprietati);
@@ -191,7 +214,12 @@ void serveste_clienti(std::string _nume_fisier_intrare)
                 _aliment_curent = new Cartof(proprietati);
             }
             else
-            if(numele_alimentului == "vin")
+            if(numele_alimentului == "bere") ///inainte de vin, pentru ca berea dupa vin e un chin
+            {
+                _aliment_curent = new Bere(proprietati);
+            }
+            else
+            if(numele_alimentului == "vin") ///dupa bere, pentru ca vinul dupa bere e placere
             {
                 _aliment_curent = get_cel_mai_ieftin_vin(proprietati);
             }

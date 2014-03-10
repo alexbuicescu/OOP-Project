@@ -11,14 +11,11 @@ private:
     std::string brand = "", tip = ""; ///tip poate fi doar blonda sau bruna
 public:
 
-///TO-DO!! - supraincarca >> ca sa citesc Varza, Bere, etc.
+    Bere()
+    {
 
+    }
 
-//    friend std::istream& operator >> (stdistream &in, Bere *b)
-//    {
-//        in>>b->brand;
-//        return in;
-//    }
     Bere(std::vector<std::string> proprietati) : Varza(proprietati)
     {
         setQuantity(atof(proprietati[0].c_str()));
@@ -50,33 +47,6 @@ public:
         }
     }
 
-    Bere(char _aliment_din_stoc[]) : Varza(_aliment_din_stoc)
-    {
-	    setUnitateDeMasa(getBucata());
-        setNumeAliment("bere");
-
-        std::stringstream _my_stream;
-        _my_stream<<_aliment_din_stoc;
-
-        double _pret;
-        _my_stream>>_pret;
-        setAlimentPrice(_pret);
-
-        double _cost;
-        _my_stream>>_cost;
-        setAlimentCost(_cost);
-
-        std::string _brand;
-        _my_stream>>_brand;
-        setBrand(_brand);
-
-        std::string _tip;
-        _my_stream>>_tip;
-        setTip(_tip);
-
-        setProprietatiComplet(_brand + " " + _tip);
-    }
-
 	~Bere()
 	{
 
@@ -101,7 +71,34 @@ public:
 	{
 	    return tip;
 	}
+
+    friend std::ifstream& operator>>(std::ifstream& input_file, Bere *obj);
 };
+std::ifstream& operator>>(std::ifstream& input_file, Bere *obj)
+{
+    obj->setUnitateDeMasa(obj->getBucata());
+    obj->setNumeAliment("bere");
+
+    double _pret;
+    input_file>>_pret;
+    obj->setAlimentPrice(_pret);
+
+    double _cost;
+    input_file>>_cost;
+    obj->setAlimentCost(_cost);
+
+    std::string _brand;
+    input_file>>_brand;
+    obj->setBrand(_brand);
+
+    std::string _tip;
+    input_file>>_tip;
+    obj->setTip(_tip);
+
+    obj->setProprietatiComplet(_brand + " " + _tip);
+
+    return input_file;
+}
 
 
 #endif // BERE_H_INCLUDED
