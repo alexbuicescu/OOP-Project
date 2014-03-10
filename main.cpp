@@ -14,7 +14,8 @@
 #include "Bere.h"
 #include "Faina.h"
 #include "Cartof.h"
-#include "Vin.h"
+#include "Vin_varsat.h"
+#include "Vin_de_soi.h"
 #include "Jucarie.h"
 
 Magazin *magazinul_meu = new Magazin();

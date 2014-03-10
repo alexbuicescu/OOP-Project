@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1394483456 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
+1394486228 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
 	<iostream>
 	<fstream>
 	<cstring>
@@ -13,7 +13,8 @@
 	"Bere.h"
 	"Faina.h"
 	"Cartof.h"
-	"Vin.h"
+	"Vin_varsat.h"
+	"Vin_de_soi.h"
 	"Jucarie.h"
 
 1393505463 c:\users\alexandru\documents\github\oop-lab\mod_de_vanzare.h
@@ -42,31 +43,32 @@
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394211975 c:\users\alexandru\documents\github\oop-lab\logic\magazin.h
+1394487254 c:\users\alexandru\documents\github\oop-lab\logic\magazin.h
 	"ListaMagazin.h"
 	<direct.h>
+	<fstream>
+	<vector>
+	<cstring>
 
-1394212191 c:\users\alexandru\documents\github\oop-lab\logic\listamagazin.h
+1394487117 c:\users\alexandru\documents\github\oop-lab\logic\listamagazin.h
 	"Aliment.h"
 
-1394484279 c:\users\alexandru\documents\github\oop-lab\alimente\aliment.h
-	"Magazin.h"
+1394486985 c:\users\alexandru\documents\github\oop-lab\alimente\aliment.h
 	<sstream>
+	<stdlib.h>
+	<fstream>
 
 1393505463 c:\users\alexandru\documents\github\oop-lab\logic\mod_de_vanzare.h
 
-1394483769 c:\users\alexandru\documents\github\oop-lab\alimente\varza.h
-	<sstream>
+1394486718 c:\users\alexandru\documents\github\oop-lab\alimente\varza.h
 	"Aliment.h"
 	"Values.h"
 	"Mod_de_vanzare.h"
 
-1394483804 c:\users\alexandru\documents\github\oop-lab\alimente\bere.h
-	<sstream>
-	<iostream>
-	<fstream>
+1394486686 c:\users\alexandru\documents\github\oop-lab\alimente\bere.h
+	"Varza.h"
 
-1394483804 c:\users\alexandru\documents\github\oop-lab\alimente\faina.h
+1394486700 c:\users\alexandru\documents\github\oop-lab\alimente\faina.h
 	"Values.h"
 	"Aliment.h"
 	"Mod_de_vanzare.h"
@@ -75,21 +77,63 @@
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394483745 c:\users\alexandru\documents\github\oop-lab\alimente\vin.h
+1394486032 c:\users\alexandru\documents\github\oop-lab\alimente\vin.h
 	<sstream>
+	<stdlib.h>
+	<fstream>
 	"Values.h"
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394483804 c:\users\alexandru\documents\github\oop-lab\alimente\cartof.h
+1394486694 c:\users\alexandru\documents\github\oop-lab\alimente\cartof.h
 	"Aliment.h"
-	<sstream>
 	"Mod_de_vanzare.h"
+	"Values.h"
 
-1394483775 c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.h
+1394486706 c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.h
+	"Varza.h"
 
 1393939509 c:\users\alexandru\documents\github\oop-lab\logic\values.h
 	"Magazin.h"
 
-1394484255 source:c:\users\alexandru\documents\github\oop-lab\alimente\aliment.cpp
+1394486958 source:c:\users\alexandru\documents\github\oop-lab\alimente\aliment.cpp
+	"Aliment.h"
+
+1394485515 source:c:\users\alexandru\documents\github\oop-lab\alimente\bere.cpp
+	"Bere.h"
+
+1394484665 source:c:\users\alexandru\documents\github\oop-lab\alimente\cartof.cpp
+	"Cartof.h"
+
+1394485676 source:c:\users\alexandru\documents\github\oop-lab\alimente\faina.cpp
+	"Faina.h"
+
+1394484427 source:c:\users\alexandru\documents\github\oop-lab\alimente\varza.cpp
+	"Varza.h"
+
+1394486008 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin.cpp
+	"Vin.h"
+
+1394485853 source:c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.cpp
+	"Jucarie.h"
+
+1394486181 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin_varsat.cpp
+	"Vin_varsat.h"
+
+1394486726 c:\users\alexandru\documents\github\oop-lab\alimente\vin_varsat.h
+	"Values.h"
+	"Aliment.h"
+	"Mod_de_vanzare.h"
+
+1394486390 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin_de_soi.cpp
+	"Vin_de_soi.h"
+
+1394486539 c:\users\alexandru\documents\github\oop-lab\alimente\vin_de_soi.h
+	"Vin_varsat.h"
+
+1394487086 source:c:\users\alexandru\documents\github\oop-lab\logic\listamagazin.cpp
+	"ListaMagazin.h"
+
+1394487208 source:c:\users\alexandru\documents\github\oop-lab\logic\magazin.cpp
+	"Magazin.h"
 
