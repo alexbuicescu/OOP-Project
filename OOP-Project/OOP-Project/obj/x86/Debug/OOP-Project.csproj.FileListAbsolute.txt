@@ -1,9 +1,9 @@
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\bin\Debug\OOP-Project.exe
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\bin\Debug\OOP-Project.pdb
-C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP_Project.Form1.resources
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP_Project.Properties.Resources.resources
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP-Project.csproj.GenerateResource.Cache
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP-Project.exe
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP-Project.pdb
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP_Project.Zi_noua.resources
 C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP-Project.csprojResolveAssemblyReference.cache
+C:\Users\Alexandru\Documents\GitHub\OOP-LAB\OOP-Project\OOP-Project\obj\x86\Debug\OOP_Project.Magazin.resources

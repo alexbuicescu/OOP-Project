@@ -9,11 +9,10 @@ using System.Windows.Forms;
 
 namespace OOP_Project
 {
-    public partial class Form1 : Form
+    public partial class Magazin : Form
     {
-        public List<Label> listaProduseLabel = new List<Label>();
-        public List<Button> listaButoane = new List<Button>();
-        public Dictionary<Button, String> hashDeButoane = new Dictionary<Button, String>();
+        public List<Label> listaProduse_label = new List<Label>();
+        public List<Button> listaZile_button = new List<Button>();
 
         int nr_of_days = 0;
 
@@ -21,7 +20,7 @@ namespace OOP_Project
 
         Button last_clicked_button = null;
 
-        public Form1()
+        public Magazin()
         {
             InitializeComponent();
             check_for_how_many_days_are();
@@ -53,11 +52,7 @@ namespace OOP_Project
                 Button buton = new Button();//null
                 createButton(currentPositionX, currentPositionY, buttonWidth, buttonHeight, "Ziua " + (i + 1).ToString(), ref buton);
 
-                listaButoane.Add(buton);
-                hashDeButoane.Add(buton, buton.Text);
-
-                //MessageBox.Show(buton.Text);
-                //Debug.WriteLine(buton.Text);
+                listaZile_button.Add(buton);
 
                 currentPositionY += buttonHeight + theGapBetweenButtons;
             }
@@ -65,12 +60,10 @@ namespace OOP_Project
 
         public void createButton(int xPosition, int yPosition, int widthSize, int heightSize, String text, ref Button buton)
         {
-            //buton = new Button();
             buton.BackColor = System.Drawing.Color.LightGreen;
             buton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             buton.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             buton.Location = new System.Drawing.Point(xPosition, yPosition);
-            buton.Name = "button1"; ///kind of random, doesn't mater
             buton.Size = new System.Drawing.Size(widthSize, heightSize);
             buton.TabIndex = 0; ///if you press TAB it will jump to the next button
             buton.Text = text;
@@ -83,19 +76,21 @@ namespace OOP_Project
 
         private void clickAction(object sender, EventArgs e)
         {
+            //daca am mai apasat pe o zi inainte, ii schimbam culoarea inapoi la verde si stergem toate labelurile create anterior
             if (last_clicked_button != null)
             {
                 last_clicked_button.BackColor = System.Drawing.Color.LightGreen;
 
-                for (int i = 0; i < listaProduseLabel.Count; i++)
+                for (int i = 0; i < listaProduse_label.Count; i++)
                 {
-                    panel2.Controls.Remove(listaProduseLabel[i]);
+                    panel2.Controls.Remove(listaProduse_label[i]);
                 }
-                listaProduseLabel.Clear();
+                listaProduse_label.Clear();
             }
             ((Button)sender).BackColor = System.Drawing.Color.LightYellow;
             last_clicked_button = (Button)sender;
 
+            //vad care sunt produsele pe care vreau sa le afisez
             string[] lines = System.IO.File.ReadAllLines(@"Baza de date/" + ((Button)sender).Text + "/db.txt");
 
             string[] vals_line_1 = lines[0].Split(' ');
@@ -110,9 +105,6 @@ namespace OOP_Project
             label_nr_profit.Text = profit_total.ToString() + " de LEI";
 
             addListOfLabels(lines);
-
-            //MessageBox.Show(hashDeButoane[(Button)sender]); ///object este echivalentul lui void *el din C, deci deaia trebuie sa pun (Button)sender, ca sa ii spun ca sender este defapt un buton
-            ///in locul lui (Button) puteam sa pun (TextBox) sau orice altceva
         }
 
         private void buton_adauga_zi_noua_Click(object sender, EventArgs e)
@@ -129,32 +121,24 @@ namespace OOP_Project
 
             for (int i = 1; i < labelTexturi.Length; i++)
             {
-                Label buton = new Label();//null
-                createLabel(currentPositionX, currentPositionY, buttonWidth, buttonHeight, labelTexturi[i], ref buton);
+                Label label = new Label();//null
+                createLabel(currentPositionX, currentPositionY, buttonWidth, buttonHeight, labelTexturi[i], ref label);
 
-                listaProduseLabel.Add(buton);
+                listaProduse_label.Add(label);
 
                 currentPositionY += buttonHeight + theGapBetweenButtons;
             }
         }
 
-        public void createLabel(int xPosition, int yPosition, int widthSize, int heightSize, String text, ref Label buton)
+        public void createLabel(int xPosition, int yPosition, int widthSize, int heightSize, String text, ref Label label)
         {
-            //buton = new Button();
-            buton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buton.Location = new System.Drawing.Point(xPosition, yPosition);
-            buton.Name = "button1"; ///kind of random, doesn't mater
-            buton.AutoSize = true;
-            //buton.Size = new System.Drawing.Size(widthSize, heightSize);
-            buton.TabIndex = 0; ///if you press TAB it will jump to the next button
-            buton.Text = text;
-            
-            panel2.Controls.Add(buton); ///most important, it adds the button to the form
-        }
+            label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label.Location = new System.Drawing.Point(xPosition, yPosition);
+            label.AutoSize = true;
+            label.TabIndex = 0; ///if you press TAB it will jump to the next button
+            label.Text = text;
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("asdasda");
+            panel2.Controls.Add(label);
         }
 
     }

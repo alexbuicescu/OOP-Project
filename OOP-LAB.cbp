@@ -35,14 +35,25 @@
 			<Add directory="Alimente" />
 			<Add directory="Logic" />
 		</Compiler>
+		<Unit filename="Alimente/Aliment.cpp" />
 		<Unit filename="Alimente/Aliment.h" />
+		<Unit filename="Alimente/Bere.cpp" />
 		<Unit filename="Alimente/Bere.h" />
+		<Unit filename="Alimente/Cartof.cpp" />
 		<Unit filename="Alimente/Cartof.h" />
+		<Unit filename="Alimente/Faina.cpp" />
 		<Unit filename="Alimente/Faina.h" />
+		<Unit filename="Alimente/Jucarie.cpp" />
 		<Unit filename="Alimente/Jucarie.h" />
+		<Unit filename="Alimente/Varza.cpp" />
 		<Unit filename="Alimente/Varza.h" />
-		<Unit filename="Alimente/Vin.h" />
+		<Unit filename="Alimente/Vin_de_soi.cpp" />
+		<Unit filename="Alimente/Vin_de_soi.h" />
+		<Unit filename="Alimente/Vin_varsat.cpp" />
+		<Unit filename="Alimente/Vin_varsat.h" />
+		<Unit filename="Logic/ListaMagazin.cpp" />
 		<Unit filename="Logic/ListaMagazin.h" />
+		<Unit filename="Logic/Magazin.cpp" />
 		<Unit filename="Logic/Magazin.h" />
 		<Unit filename="Logic/Mod_de_vanzare.h" />
 		<Unit filename="Logic/Values.h" />
