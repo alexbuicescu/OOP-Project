@@ -8,8 +8,15 @@ Vin_de_soi::Vin_de_soi()
 
 Vin_de_soi::Vin_de_soi(std::vector<std::string> proprietati)// : Vin_varsat(proprietati)
 {
-	setQuantity(atof(proprietati[0].c_str()));
-	setAlimentPrice(-1);
+    try
+    {
+        setQuantity(atof(proprietati[0].c_str()));
+	}
+    catch(...)
+    {
+        setQuantity(0);
+    }
+	setAlimentPrice(0);
 
 	///setez proprietatile alimentului
 	for(int i = 1; i < proprietati.size(); i++)
@@ -26,7 +33,14 @@ Vin_de_soi::Vin_de_soi(std::vector<std::string> proprietati)// : Vin_varsat(prop
 			else
 				if(proprietati[i][0] >= '0' && proprietati[i][0] <= '9')
 				{
-					setAn(atoi(proprietati[i].c_str()));
+				    try
+					{
+					    setAn(atoi(proprietati[i].c_str()));
+					}
+					catch(...)
+					{
+					    setAn(0);
+					}
 				}
 				else
 					if(proprietati[i] == "Franta" || proprietati[i] == "Argentina" || proprietati[i] == "Chile" || proprietati[i] == "Australia")
@@ -69,6 +83,43 @@ Vin_de_soi::~Vin_de_soi()
 
 }
 
+std::ifstream& operator>>(std::ifstream& input_file, Vin_de_soi *obj)
+{
+    obj->setUnitateDeMasa(obj->getBucata());
+    obj->setNumeAliment("vin_de_soi");
+
+    double _pret;
+    input_file>>_pret;
+    obj->setAlimentPrice(_pret);
+
+    double _cost;
+    input_file>>_cost;
+    obj->setAlimentCost(_cost);
+
+    std::string _nume;
+    input_file>>_nume;
+    obj->setNumeVin(_nume);
+
+    std::string _culoare;
+    input_file>>_culoare;
+    obj->setCuloare(_culoare);
+
+    std::string _soi;
+    input_file>>_soi;
+    obj->setSoi(_soi);
+
+    std::string _tara;
+    input_file>>_tara;
+    obj->setTara(_tara);
+
+    int _an;
+    input_file>>_an;
+    obj->setAn(_an);
+
+    obj->setProprietatiComplet(_nume + " " + _culoare + " " + _soi + " " + _tara + " " + ToString(_an));
+    return input_file;
+}
+
 void Vin_de_soi::setNumeVin(std::string _nume)
 {
 	numele_vinului = _nume;
@@ -106,42 +157,6 @@ void Vin_de_soi::setQuantity(int _cantitate)
 
 int Vin_de_soi::getQuantity()
 {
+    ///nimeni nu o sa ajunga cu cititul pana aici :(
 	return (int)askedQuantity;
-}
-
-std::ifstream& operator>>(std::ifstream& input_file, Vin_de_soi *obj)
-{
-    obj->setUnitateDeMasa(obj->getBucata());
-    obj->setNumeAliment("vin_de_soi");
-
-    double _pret;
-    input_file>>_pret;
-    obj->setAlimentPrice(_pret);
-
-    double _cost;
-    input_file>>_cost;
-    obj->setAlimentCost(_cost);
-
-    std::string _nume;
-    input_file>>_nume;
-    obj->setNumeVin(_nume);
-
-    std::string _culoare;
-    input_file>>_culoare;
-    obj->setCuloare(_culoare);
-
-    std::string _soi;
-    input_file>>_soi;
-    obj->setSoi(_soi);
-
-    std::string _tara;
-    input_file>>_tara;
-    obj->setTara(_tara);
-
-    int _an;
-    input_file>>_an;
-    obj->setAn(_an);
-
-    obj->setProprietatiComplet(_nume + " " + _culoare + " " + _soi + " " + _tara + " " + ToString(_an));
-    return input_file;
 }

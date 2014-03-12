@@ -204,7 +204,7 @@
             this.label_canitate_totala.TabIndex = 5;
             this.label_canitate_totala.Text = "Cantitatea de produse vandute:";
             // 
-            // Form1
+            // Magazin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -214,7 +214,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.buton_adauga_zi_noua);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "Magazin";
             this.Text = "Magazin";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

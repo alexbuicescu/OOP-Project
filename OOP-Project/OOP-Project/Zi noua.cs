@@ -16,6 +16,9 @@ namespace OOP_Project
         public List<TextBox> listaCantitati_textBox = new List<TextBox>();
         int the_gap_between_controls = 15;//15 pixels
 
+        double pret_total = 0;
+        double pret_curent = 0;
+
         int lastY;
 
         int nr_of_aliments = 0;
@@ -140,6 +143,7 @@ namespace OOP_Project
                 }
             }
 
+
             //MessageBox.Show(_produs);
 
             //ii dau un sleep mic, ca sa las C++ sa termine operatiile
@@ -151,11 +155,14 @@ namespace OOP_Project
                 try
                 {
                     string text = System.IO.File.ReadAllText("pret client curent.txt");
+                    pret_curent = double.Parse(text);
+                    
                     MessageBox.Show("Pretul total al alimentelor este: " + text + " de LEI!" + "\n" + "Daca pretul nu apare, mai apasati inca o data pe butonul Vezi Pret, e posibil ca pretul sa nu fi fost calculat inca.");
                     done = true;
                 }
                 catch
                 {
+                    pret_curent = 0;
                 }
             }
         }
@@ -175,16 +182,19 @@ namespace OOP_Project
                 }
             }
 
-            int control_width = initial_form.buton_prototip_zi.Size.Width, control_height = initial_form.buton_prototip_zi.Size.Height;
+            if (pret_curent != 0)
+            {
+                int control_width = initial_form.buton_prototip_zi.Size.Width, control_height = initial_form.buton_prototip_zi.Size.Height;
 
-            int current_position_x = initial_form.listaZile_button[initial_form.listaZile_button.Count - 1].Location.X,
-                current_position_y = initial_form.listaZile_button[initial_form.listaZile_button.Count - 1].Location.Y + control_height + the_gap_between_controls;
+                int current_position_x = initial_form.listaZile_button[initial_form.listaZile_button.Count - 1].Location.X,
+                    current_position_y = initial_form.listaZile_button[initial_form.listaZile_button.Count - 1].Location.Y + control_height + the_gap_between_controls;
 
-            //adaug o zi noua in formul principal
-            Button control = new Button();//null
-            initial_form.createButton(current_position_x, current_position_y, control_width, control_height, "Ziua " + (initial_form.listaZile_button.Count + 1).ToString(), ref control);
+                //adaug o zi noua in formul principal
+                Button control = new Button();//null
+                initial_form.createButton(current_position_x, current_position_y, control_width, control_height, "Ziua " + (initial_form.listaZile_button.Count + 1).ToString(), ref control);
 
-            initial_form.listaZile_button.Add(control);
+                initial_form.listaZile_button.Add(control);
+            }
 
             //ii dau un sleep mic, ca sa las C++ sa termine operatiile
             System.Threading.Thread.Sleep(100);
@@ -200,6 +210,7 @@ namespace OOP_Project
                 {
                     System.IO.File.WriteAllText(@"decizie cumparator.txt", "da");
                     done = true;
+                    pret_total += pret_curent;
                 }
                 catch
                 {

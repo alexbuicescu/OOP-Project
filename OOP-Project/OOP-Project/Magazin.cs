@@ -91,7 +91,12 @@ namespace OOP_Project
             last_clicked_button = (Button)sender;
 
             //vad care sunt produsele pe care vreau sa le afisez
-            string[] lines = System.IO.File.ReadAllLines(@"Baza de date/" + ((Button)sender).Text + "/db.txt");
+            string[] lines;
+            try
+            {
+                lines = System.IO.File.ReadAllLines(@"Baza de date/" + ((Button)sender).Text + "/db.txt");
+            }
+            catch (Exception) { return; }
 
             string[] vals_line_1 = lines[0].Split(' ');
             cantitate_totala = double.Parse(vals_line_1[0]);

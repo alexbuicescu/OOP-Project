@@ -27,31 +27,8 @@ void serveste_clienti();
 void deschide_magazin();
 void inchide_magazin();
 
-//class Test
-//{
-//private:
-//    int valoare = 0;
-//public:
-//
-//    int getValoare()
-//    {
-//        return valoare;
-//    }
-//
-//friend std::istream& operator>>(std::istream& is, Test *obj);
-//};
-//
-//std::istream& operator>>(std::istream& is, Test *obj)
-//{
-//    is>>obj->valoare;
-//    return is;
-//}
-
 int main()
 {
-//    Test *p = new Test;
-//    std::cin>>p;
-//    std::cout<<p->getValoare();
     deschide_magazin();
     inchide_magazin();
 

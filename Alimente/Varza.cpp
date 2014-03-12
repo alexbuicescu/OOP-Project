@@ -9,8 +9,15 @@ Varza::Varza()
 
 Varza::Varza(std::vector<std::string> proprietati)
 {
-	setQuantity(atof(proprietati[0].c_str()));
-	setAlimentPrice(-1);
+    try
+    {
+        setQuantity(atof(proprietati[0].c_str()));
+	}
+    catch(...)
+    {
+        setQuantity(0);
+    }
+	setAlimentPrice(0);
 
 	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
 	{

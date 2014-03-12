@@ -1,6 +1,5 @@
 #include "Faina.h"
 
-
 Faina::Faina()
 {
 
@@ -8,12 +7,26 @@ Faina::Faina()
 
 Faina::Faina(std::vector<std::string> proprietati)
 {
-	setQuantity(atof(proprietati[0].c_str()));
-	setAlimentPrice(-1);
+    try
+    {
+        setQuantity(atof(proprietati[0].c_str()));
+    }
+    catch(...)
+    {
+        setQuantity(0);
+    }
+	setAlimentPrice(0);
 
 	if(proprietati.size() >= 2)
 	{
-		setCalitate(atoi(proprietati[1].c_str()));
+	    try
+	    {
+            setCalitate(atoi(proprietati[1].c_str()));
+		}
+        catch(...)
+        {
+            setCalitate(1);
+        }
 	}
 
 	std::string _calitate = "";

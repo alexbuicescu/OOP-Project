@@ -8,8 +8,15 @@ Bere::Bere()
 
 Bere::Bere(std::vector<std::string> proprietati)// : Varza(proprietati)
 {
-	setQuantity(atof(proprietati[0].c_str()));
-	setAlimentPrice(-1);
+    try
+    {
+        setQuantity(atof(proprietati[0].c_str()));
+	}
+    catch(...)
+    {
+        setQuantity(0);
+    }
+	setAlimentPrice(0);
 
 	for(int i = 1; i < proprietati.size(); i++)
 	{

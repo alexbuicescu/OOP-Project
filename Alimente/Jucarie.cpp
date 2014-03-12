@@ -8,8 +8,15 @@ Jucarie::Jucarie()
 
 Jucarie::Jucarie(std::vector<std::string> proprietati)// : Varza(proprietati)
 {
-	setQuantity(atof(proprietati[0].c_str()));
-	setAlimentPrice(-1);
+    try
+    {
+        setQuantity(atof(proprietati[0].c_str()));
+	}
+    catch(...)
+    {
+        setQuantity(0);
+    }
+	setAlimentPrice(0);
 
 	if(proprietati.size() >= 2)
 	{

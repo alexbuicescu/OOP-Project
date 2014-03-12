@@ -38,7 +38,7 @@ public:
     ///initializez cu 0 toate datele mele
 	Aliment();
 
-	~Aliment();
+	virtual ~Aliment() = 0;///ca sa nu pot declara un element asa: Aliment *p = new Aliment;
 
 	void setAlimentPrice(double _price);
 	double getAlimentPrice();

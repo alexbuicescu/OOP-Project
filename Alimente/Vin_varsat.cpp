@@ -8,8 +8,15 @@ Vin_varsat::Vin_varsat()
 
 Vin_varsat::Vin_varsat(std::vector<std::string> proprietati)
 {
-	setQuantity(atof(proprietati[0].c_str()));
-	setAlimentPrice(-1);
+    try
+    {
+        setQuantity(atof(proprietati[0].c_str()));
+	}
+    catch(...)
+    {
+        setQuantity(0);
+    }
+	setAlimentPrice(0);
 
 	///setez proprietatile alimentului
 	for(int i = 1; i < proprietati.size(); i++)
