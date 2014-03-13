@@ -1,4 +1,5 @@
 #include "Vin_varsat.h"
+#include "Vin_de_soi.h"
 
 
 Vin_varsat::Vin_varsat()
@@ -35,7 +36,9 @@ Vin_varsat::Vin_varsat(std::vector<std::string> proprietati)
 	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
 	{
 		///daca in stoc am un vin
-		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "vin_varsat")
+		if(dynamic_cast<Vin_varsat*>(magazinul_meu->getAlimentFromStock(i)) != NULL &&
+            dynamic_cast<Vin_de_soi*>(magazinul_meu->getAlimentFromStock(i)) == NULL) ///vin_de_soi mosteneste pe vin_varsat
+//		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "vin_varsat")
 		{
 			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getCuloare()) != std::string::npos &&
 			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getSoi()) != std::string::npos)

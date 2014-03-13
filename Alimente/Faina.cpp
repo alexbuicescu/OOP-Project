@@ -38,7 +38,8 @@ Faina::Faina(std::vector<std::string> proprietati)
 	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
 	{
 		///daca in stoc am faina
-		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "faina")
+		if(dynamic_cast<Faina*>(magazinul_meu->getAlimentFromStock(i)) != NULL)
+//		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "faina")
 		{
 			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(_calitate) != std::string::npos)
 			{

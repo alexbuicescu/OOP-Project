@@ -33,7 +33,8 @@ Bere::Bere(std::vector<std::string> proprietati)// : Varza(proprietati)
 	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
 	{
 		///daca in stoc am o bere
-		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "bere")
+		if(dynamic_cast<Bere*>(magazinul_meu->getAlimentFromStock(i)) != NULL)
+//		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "bere")
 		{
 			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getBrand()) != std::string::npos &&
 			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getTip()) != std::string::npos)

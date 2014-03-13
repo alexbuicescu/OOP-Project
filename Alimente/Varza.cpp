@@ -1,4 +1,7 @@
 #include "Varza.h"
+#include "Bere.h"
+#include "Jucarie.h"
+#include <iostream>
 
 
 
@@ -21,10 +24,18 @@ Varza::Varza(std::vector<std::string> proprietati)
 
 	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
 	{
+//	    Aliment *op = dynamic_cast<Varza*>(magazinul_meu->getAlimentFromStock(i));
 		///daca in stoc am o varza
-		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "varza")
+//		if(op != NULL)
+
+        if(dynamic_cast<Varza*>(magazinul_meu->getAlimentFromStock(i)) != NULL &&
+           dynamic_cast<Bere*>(magazinul_meu->getAlimentFromStock(i)) == NULL && ///Bere mosteneste Varza
+           dynamic_cast<Jucarie*>(magazinul_meu->getAlimentFromStock(i)) == NULL) ///Jucarie mosteneste Varza
+//		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "varza")
 		{
+//		    std::cout<<"a gasit varza: "<<i<<' '<<magazinul_meu->getAlimentFromStock(i)->getNumeAliment()<<'\n';
 			set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+//            delete op;
 		}
 	}
 }

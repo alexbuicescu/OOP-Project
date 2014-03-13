@@ -64,7 +64,8 @@ Vin_de_soi::Vin_de_soi(std::vector<std::string> proprietati)// : Vin_varsat(prop
 	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
 	{
 		///daca in stoc am un vin
-		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "vin_de_soi")
+		if(dynamic_cast<Vin_de_soi*>(magazinul_meu->getAlimentFromStock(i)) != NULL)
+//		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "vin_de_soi")
 		{
 			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getNumeVin()) != std::string::npos &&
 			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(an) != std::string::npos &&

@@ -26,7 +26,8 @@ Jucarie::Jucarie(std::vector<std::string> proprietati)// : Varza(proprietati)
 	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
 	{
 		///daca in stoc am o jucarie
-		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "jucarie")
+		if(dynamic_cast<Jucarie*>(magazinul_meu->getAlimentFromStock(i)) != NULL)
+//		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "jucarie")
 		{
 			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getNumeJucarie()) != std::string::npos)
 			{

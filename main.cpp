@@ -27,8 +27,41 @@ void serveste_clienti();
 void deschide_magazin();
 void inchide_magazin();
 
+class abc
+{
+public:
+    abc(){}
+    ~abc(){}
+//    abc()
+//    {
+//        std::cout<<"abc"<<'\n';
+//    }
+};
+
+class qwe : public abc
+{
+public:
+    qwe(){}
+    ~qwe(){}
+//    qwe()
+//    {
+//        std::cout<<"qwe"<<'\n';
+//    }
+};
+
+abc *vec[2];
+
 int main()
 {
+//    abc *q = new qwe();
+//    vec[0] = new abc();
+//    vec[1] = new qwe();
+//    qwe *p = dynamic_cast<qwe*>(vec[1]);
+//    if(p != NULL)
+//    {
+//        std::cout<<"ok"<<'\n';
+//    }
+
     deschide_magazin();
     inchide_magazin();
 

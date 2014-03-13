@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1394651368 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
+1394654301 source:c:\users\alexandru\documents\github\oop-lab\main.cpp
 	<iostream>
 	<fstream>
 	<cstring>
@@ -99,26 +99,25 @@
 1394650754 source:c:\users\alexandru\documents\github\oop-lab\alimente\aliment.cpp
 	"Aliment.h"
 
-1394651198 source:c:\users\alexandru\documents\github\oop-lab\alimente\bere.cpp
+1394693979 source:c:\users\alexandru\documents\github\oop-lab\alimente\bere.cpp
 	"Bere.h"
 
-1394651108 source:c:\users\alexandru\documents\github\oop-lab\alimente\cartof.cpp
+1394694015 source:c:\users\alexandru\documents\github\oop-lab\alimente\cartof.cpp
 	"Cartof.h"
 
-1394651295 source:c:\users\alexandru\documents\github\oop-lab\alimente\faina.cpp
+1394694034 source:c:\users\alexandru\documents\github\oop-lab\alimente\faina.cpp
 	"Faina.h"
-	<string>
-	<iostream>
-	<vector>
-	<stdexcept>
 
-1394651229 source:c:\users\alexandru\documents\github\oop-lab\alimente\varza.cpp
+1394694141 source:c:\users\alexandru\documents\github\oop-lab\alimente\varza.cpp
 	"Varza.h"
+	"Bere.h"
+	"Jucarie.h"
+	<iostream>
 
 1394486008 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin.cpp
 	"Vin.h"
 
-1394651198 source:c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.cpp
+1394694046 source:c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.cpp
 	"Jucarie.h"
 
 1394651229 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin_varsat.cpp
@@ -129,7 +128,7 @@
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394651320 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin_de_soi.cpp
+1394694102 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin_de_soi.cpp
 	"Vin_de_soi.h"
 
 1394486539 c:\users\alexandru\documents\github\oop-lab\alimente\vin_de_soi.h
