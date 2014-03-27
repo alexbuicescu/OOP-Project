@@ -22,22 +22,26 @@ Varza::Varza(std::vector<std::string> proprietati)
     }
 	setAlimentPrice(0);
 
-	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
-	{
-//	    Aliment *op = dynamic_cast<Varza*>(magazinul_meu->getAlimentFromStock(i));
-		///daca in stoc am o varza
-//		if(op != NULL)
+    std::vector<std::string> properties;
 
-        if(dynamic_cast<Varza*>(magazinul_meu->getAlimentFromStock(i)) != NULL &&
-           dynamic_cast<Bere*>(magazinul_meu->getAlimentFromStock(i)) == NULL && ///Bere mosteneste Varza
-           dynamic_cast<Jucarie*>(magazinul_meu->getAlimentFromStock(i)) == NULL) ///Jucarie mosteneste Varza
+    set_price_for_customer_item("varza", properties);
+
+//	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+//	{
+////	    Aliment *op = dynamic_cast<Varza*>(magazinul_meu->getAlimentFromStock(i));
+//		///daca in stoc am o varza
+////		if(op != NULL)
+//
+////        if(dynamic_cast<Varza*>(magazinul_meu->getAlimentFromStock(i)) != NULL &&
+////           dynamic_cast<Bere*>(magazinul_meu->getAlimentFromStock(i)) == NULL && ///Bere mosteneste Varza
+////           dynamic_cast<Jucarie*>(magazinul_meu->getAlimentFromStock(i)) == NULL) ///Jucarie mosteneste Varza
 //		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "varza")
-		{
-//		    std::cout<<"a gasit varza: "<<i<<' '<<magazinul_meu->getAlimentFromStock(i)->getNumeAliment()<<'\n';
-			set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
-//            delete op;
-		}
-	}
+//		{
+////		    std::cout<<"a gasit varza: "<<i<<' '<<magazinul_meu->getAlimentFromStock(i)->getNumeAliment()<<'\n';
+//			check_for_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+////            delete op;
+//		}
+//	}
 }
 
 void Varza::setQuantity(int _cantitate)

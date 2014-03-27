@@ -61,22 +61,31 @@ Vin_de_soi::Vin_de_soi(std::vector<std::string> proprietati)// : Vin_varsat(prop
 		an = ToString(getAn());
 	}
 
-	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
-	{
-		///daca in stoc am un vin
-		if(dynamic_cast<Vin_de_soi*>(magazinul_meu->getAlimentFromStock(i)) != NULL)
+    std::vector<std::string> properties;
+    properties.push_back(an);
+    properties.push_back(getNumeVin());
+    properties.push_back(getSoi());
+    properties.push_back(getCuloare());
+    properties.push_back(getTara());
+
+    set_price_for_customer_item("vin_de_soi", properties);
+
+//	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+//	{
+//		///daca in stoc am un vin
+////		if(dynamic_cast<Vin_de_soi*>(magazinul_meu->getAlimentFromStock(i)) != NULL)
 //		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "vin_de_soi")
-		{
-			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getNumeVin()) != std::string::npos &&
-			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(an) != std::string::npos &&
-			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getSoi()) != std::string::npos &&
-			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getCuloare()) != std::string::npos &&
-			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getTara()) != std::string::npos)
-			{
-				set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
-			}
-		}
-	}
+//		{
+//			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getNumeVin()) != std::string::npos &&
+//			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(an) != std::string::npos &&
+//			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getSoi()) != std::string::npos &&
+//			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getCuloare()) != std::string::npos &&
+//			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getTara()) != std::string::npos)
+//			{
+//				check_for_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+//			}
+//		}
+//	}
 }
 
 Vin_de_soi::~Vin_de_soi()

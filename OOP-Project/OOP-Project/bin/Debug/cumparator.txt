@@ -1,4 +1,4 @@
 next
-vin 1
+varza 2
 finish
 

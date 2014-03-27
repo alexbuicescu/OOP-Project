@@ -35,18 +35,23 @@ Faina::Faina(std::vector<std::string> proprietati)
 		_calitate = ToString(getCalitate());
 	}
 
-	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
-	{
-		///daca in stoc am faina
-		if(dynamic_cast<Faina*>(magazinul_meu->getAlimentFromStock(i)) != NULL)
+    std::vector<std::string> properties;
+    properties.push_back(_calitate);
+
+    set_price_for_customer_item("faina", properties);
+
+//	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+//	{
+//		///daca in stoc am faina
+////		if(dynamic_cast<Faina*>(magazinul_meu->getAlimentFromStock(i)) != NULL)
 //		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "faina")
-		{
-			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(_calitate) != std::string::npos)
-			{
-				set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
-			}
-		}
-	}
+//		{
+//			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(_calitate) != std::string::npos)
+//			{
+//				check_for_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+//			}
+//		}
+//	}
 }
 
 Faina::~Faina()

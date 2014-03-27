@@ -53,14 +53,15 @@
 1394487117 c:\users\alexandru\documents\github\oop-lab\logic\listamagazin.h
 	"Aliment.h"
 
-1394651401 c:\users\alexandru\documents\github\oop-lab\alimente\aliment.h
+1395922633 c:\users\alexandru\documents\github\oop-lab\alimente\aliment.h
 	<sstream>
 	<stdlib.h>
 	<fstream>
+	<vector>
 
 1393505463 c:\users\alexandru\documents\github\oop-lab\logic\mod_de_vanzare.h
 
-1394486718 c:\users\alexandru\documents\github\oop-lab\alimente\varza.h
+1395830208 c:\users\alexandru\documents\github\oop-lab\alimente\varza.h
 	"Aliment.h"
 	"Values.h"
 	"Mod_de_vanzare.h"
@@ -96,19 +97,20 @@
 1393939509 c:\users\alexandru\documents\github\oop-lab\logic\values.h
 	"Magazin.h"
 
-1394650754 source:c:\users\alexandru\documents\github\oop-lab\alimente\aliment.cpp
+1395922231 source:c:\users\alexandru\documents\github\oop-lab\alimente\aliment.cpp
 	"Aliment.h"
+	"Values.h"
 
-1394693979 source:c:\users\alexandru\documents\github\oop-lab\alimente\bere.cpp
+1395922702 source:c:\users\alexandru\documents\github\oop-lab\alimente\bere.cpp
 	"Bere.h"
 
-1394694015 source:c:\users\alexandru\documents\github\oop-lab\alimente\cartof.cpp
+1395922726 source:c:\users\alexandru\documents\github\oop-lab\alimente\cartof.cpp
 	"Cartof.h"
 
-1394694034 source:c:\users\alexandru\documents\github\oop-lab\alimente\faina.cpp
+1395922763 source:c:\users\alexandru\documents\github\oop-lab\alimente\faina.cpp
 	"Faina.h"
 
-1394694141 source:c:\users\alexandru\documents\github\oop-lab\alimente\varza.cpp
+1395922810 source:c:\users\alexandru\documents\github\oop-lab\alimente\varza.cpp
 	"Varza.h"
 	"Bere.h"
 	"Jucarie.h"
@@ -117,18 +119,19 @@
 1394486008 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin.cpp
 	"Vin.h"
 
-1394694046 source:c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.cpp
+1395922780 source:c:\users\alexandru\documents\github\oop-lab\alimente\jucarie.cpp
 	"Jucarie.h"
 
-1394651229 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin_varsat.cpp
+1395921852 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin_varsat.cpp
 	"Vin_varsat.h"
+	"Vin_de_soi.h"
 
 1394486726 c:\users\alexandru\documents\github\oop-lab\alimente\vin_varsat.h
 	"Values.h"
 	"Aliment.h"
 	"Mod_de_vanzare.h"
 
-1394694102 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin_de_soi.cpp
+1395922852 source:c:\users\alexandru\documents\github\oop-lab\alimente\vin_de_soi.cpp
 	"Vin_de_soi.h"
 
 1394486539 c:\users\alexandru\documents\github\oop-lab\alimente\vin_de_soi.h

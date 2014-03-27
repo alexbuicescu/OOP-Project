@@ -1,4 +1,5 @@
 #include "Aliment.h"
+#include "Values.h"
 
 Aliment::Aliment()
 {
@@ -108,8 +109,33 @@ double Aliment::getAlimentPriceByQuantity()
 	return (double) askedQuantity * price;
 }
 
-void Aliment::set_most_profitable_price(int _indice_aliment_din_stoc, double product_price, double product_cost)
+void Aliment::set_price_for_customer_item(std::string item_name, std::vector<std::string> properties)
 {
+    for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+	{
+		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == item_name)
+		{
+		    bool found_aliment = true;
+		    for(int j = 0; j < properties.size(); j++)
+            {
+                if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(properties[j]) == std::string::npos)
+                {
+                    found_aliment = false;
+                }
+            }
+			if(found_aliment)
+			{
+				check_for_price(i);
+			}
+		}
+	}
+}
+
+void Aliment::check_for_price(int _indice_aliment_din_stoc)
+{
+    double product_price = magazinul_meu->getAlimentFromStock(_indice_aliment_din_stoc)->getAlimentPrice();
+    double product_cost = magazinul_meu->getAlimentFromStock(_indice_aliment_din_stoc)->getAlimentCost();
+
 	if(getAlimentPrice() != -1)
 	{
 		if(getAlimentPrice() - getAlimentCost() < product_price - product_cost)

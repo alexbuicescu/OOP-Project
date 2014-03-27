@@ -33,20 +33,26 @@ Vin_varsat::Vin_varsat(std::vector<std::string> proprietati)
 			}
 	}
 
-	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
-	{
-		///daca in stoc am un vin
-		if(dynamic_cast<Vin_varsat*>(magazinul_meu->getAlimentFromStock(i)) != NULL &&
-            dynamic_cast<Vin_de_soi*>(magazinul_meu->getAlimentFromStock(i)) == NULL) ///vin_de_soi mosteneste pe vin_varsat
+    std::vector<std::string> properties;
+    properties.push_back(getSoi());
+    properties.push_back(getCuloare());
+
+    set_price_for_customer_item("vin_varsat", properties);
+
+//	for(int i = 0; i < magazinul_meu->size_of_lista_stoc(); i++)
+//	{
+//		///daca in stoc am un vin
+////		if(dynamic_cast<Vin_varsat*>(magazinul_meu->getAlimentFromStock(i)) != NULL &&
+////            dynamic_cast<Vin_de_soi*>(magazinul_meu->getAlimentFromStock(i)) == NULL) ///vin_de_soi mosteneste pe vin_varsat
 //		if(magazinul_meu->getAlimentFromStock(i)->getNumeAliment() == "vin_varsat")
-		{
-			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getCuloare()) != std::string::npos &&
-			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getSoi()) != std::string::npos)
-			{
-				set_most_profitable_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
-			}
-		}
-	}
+//		{
+//			if(magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getCuloare()) != std::string::npos &&
+//			        magazinul_meu->getAlimentFromStock(i)->get_proprietati_complet().find(getSoi()) != std::string::npos)
+//			{
+//				check_for_price(i, magazinul_meu->getAlimentFromStock(i)->getAlimentPrice(), magazinul_meu->getAlimentFromStock(i)->getAlimentCost());
+//			}
+//		}
+//	}
 }
 
 Vin_varsat::~Vin_varsat()

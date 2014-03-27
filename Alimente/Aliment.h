@@ -5,6 +5,7 @@
 #include <sstream>
 #include <stdlib.h>
 #include <fstream>
+#include <vector>
 
 template <class T>
 std::string ToString(const T &value_to_convert)
@@ -67,7 +68,9 @@ public:
 	///retin care este cantitatea ceruta de cumparator, si returnez pretul pentru aceasta cantitate
 	double getAlimentPriceByQuantity();
 
-	void set_most_profitable_price(int _indice_aliment_din_stoc, double product_price, double product_cost);
+    void check_for_price(int _indice_aliment_din_stoc);
+
+    void set_price_for_customer_item(std::string item_name, std::vector<std::string> properties);
 };
 
 #endif // ALIMENT_H_INCLUDED
